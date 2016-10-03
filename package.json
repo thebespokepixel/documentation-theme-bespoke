@@ -1,0 +1,61 @@
+{
+  "name": "documentation-theme-bespoke",
+  "version": "0.0.1",
+  "description": "A bespoke theme for documentation",
+  "scripts": {
+    "prepublish": "./scripts/install-components",
+    "test": "xo && snyk test && nyc ava",
+    "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
+    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
+    "generate-test-fixtures": "scripts/generate-test-fixtures",
+    "clean": "gulp clean"
+  },
+  "main": "index.js",
+  "files": [
+    "assets",
+    "*._",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/documentationjs/documentation-theme-default.git"
+  },
+  "keywords": [
+    "documentation",
+    "documentation-theme",
+    "theme"
+  ],
+  "author": "Mark Griffiths",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/documentationjs/documentation-theme-default/issues"
+  },
+  "homepage": "https://github.com/documentationjs/documentation-theme-default",
+  "dependencies": {
+  "anchor-js": "^3.2.1",
+    "concat-stream": "^1.5.0",
+    "documentation": "^4.0.0-beta10",
+    "highlight.js": "^9.0.0",
+    "lodash": "4.11.1",
+    "remark": "^4.1.2",
+    "remark-html": "^3.0.0",
+    "unist-util-visit": "1.1.0",
+    "vinyl": "^1.0.0",
+    "vinyl-fs": "^2.0.0"
+  },
+  "devDependencies": {
+    "ace-css": "^1.1.0",
+    "async": "^2.0.1",
+    "ava": "^0.16.0",
+    "codeclimate-test-reporter": "^0.3.3",
+    "nyc": "^8.3.0",
+    "shelljs": "^0.7.4",
+    "snyk": "^1.19.1",
+    "typopro-web": "^3.4.9",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "semicolon": false,
+    "esnext": false
+  }
+}

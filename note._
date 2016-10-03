@@ -1,0 +1,10 @@
+<section class='pb2 clearfix'>
+
+  <h3 id='<%- note.namespace %>' class='mt0'>
+    <%- note.name %>
+  </h3>
+
+  <% if (note.description) { %>
+    <%= md(note.description) %>
+  <% } %>
+</section>
