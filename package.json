@@ -7,8 +7,7 @@
     "test": "xo && snyk test && nyc ava",
     "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
-    "generate-test-fixtures": "scripts/generate-test-fixtures",
-    "clean": "gulp clean"
+    "generate-test-fixtures": "scripts/generate-test-fixtures"
   },
   "main": "index.js",
   "files": [
