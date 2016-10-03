@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "prepublish": "./scripts/install-components",
