@@ -36,7 +36,7 @@
     "documentation": "^4.0.0-beta10",
     "github-slugger": "^1.1.1",
     "highlight.js": "^9.0.0",
-    "lodash": "4.16.2",
+    "lodash": "4.16.4",
     "vinyl": "^2.0.0",
     "vinyl-fs": "^2.0.0"
   },
