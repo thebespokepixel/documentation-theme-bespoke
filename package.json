@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "prepublish": "./scripts/install-components",
@@ -67,7 +67,7 @@
     "semicolon": false,
     "esnext": true
   },
-  "buildNumber": 178,
+  "buildNumber": 0,
   "engines": {
     "node": ">=4.0 <7.0"
   }
