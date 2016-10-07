@@ -12,7 +12,7 @@
   "main": "index.js",
   "files": [
     "assets",
-    "*._",
+    "parts",
     "index.js"
   ],
   "repository": {
