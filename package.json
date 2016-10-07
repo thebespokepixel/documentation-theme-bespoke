@@ -41,12 +41,23 @@
     "vinyl-fs": "^2.0.0"
   },
   "devDependencies": {
+    "@thebespokepixel/cordial": "^0.16.4",
+    "@thebespokepixel/oco-colorvalue-ex": "^0.2.0",
+    "@thebespokepixel/palette2oco": "^0.1.1",
     "ace-css": "^1.1.0",
     "async": "^2.0.1",
+    "autoprefixer": "^6.5.0",
     "ava": "^0.16.0",
     "codeclimate-test-reporter": "^0.3.3",
+    "cssnano": "^3.7.6",
+    "deep-assign": "^2.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-stylus": "^2.5.0",
+    "nib": "^1.1.2",
     "nyc": "^8.3.0",
+    "poststylus": "^0.2.3",
     "remark": "^6.0.1",
+    "rollup-plugin-uglify": "^1.0.1",
     "shelljs": "^0.7.4",
     "snyk": "^1.19.1",
     "typopro-web": "^3.4.9",
@@ -54,6 +65,10 @@
   },
   "xo": {
     "semicolon": false,
-    "esnext": false
+    "esnext": true
+  },
+  "buildNumber": 178,
+  "engines": {
+    "node": ">=4.0 <7.0"
   }
 }

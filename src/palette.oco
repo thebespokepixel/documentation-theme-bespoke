@@ -1,0 +1,41 @@
+oct/
+  defaultView/view: Minimal
+  defaultView/swatchShape: SQUARE
+  defaultView/backgroundColor: #333333
+flat:
+  oct/
+    view: Fan
+    showInfo: true
+  100: hsv(60, 30, 100)
+  75: hsv(60, 30, 75)
+  50: hsv(60, 30, 50)
+  30: hsv(60, 30, 30)
+  20: hsv(60, 30, 20)
+  15: hsv(60, 30, 15)
+  13: hsv(60, 30, 13)
+  11: hsv(60, 30, 11)
+  8: hsv(60, 30, 8)
+standout:
+  oct/
+    view: Fan
+    showInfo: true
+  50: hsv(60, 50, 50)
+  45: hsv(60, 50, 45)
+  40: hsv(60, 50, 40)
+  35: hsv(60, 50, 35)
+  30: hsv(60, 50, 30)
+sidebar:
+  oct/
+    view: Stack
+    backgroundColor: =flat.15
+  background: =flat.15
+  foreground: =flat.75
+  hilite: =flat.100
+page:
+  oct/
+    view: Stack
+    backgroundColor: =background
+  background: #e0e0e0
+  foreground: #4a4a4a
+  shadow: =flat.50
+  hilite: hsva(75, 60, 30, 0.3)

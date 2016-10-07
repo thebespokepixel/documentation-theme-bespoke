@@ -2,8 +2,8 @@
 
   <% if (typeof nested === 'undefined') { %>
   <div class='clearfix'>
-    <h3 class='left m0' id='<%- slug(section.namespace) %>'>
-      <%- section.name %>
+    <h3 class='left m0 panel-title' id='<%- slug(section.namespace) %>'>
+      <%- section.name %>  <% if (section.returns) { %><span>→ <%= formatType(section.returns[0].type) %></span><% }%>
     </h3>
     <% if (section.context && section.context.github) { %>
       <a class='right bg-darken-1 rounded px1 quiet h5' href='<%= section.context.github %>'>
@@ -15,7 +15,7 @@
 
   <%= md(section.description) %>
   <% if (section.kind === 'function') { %>
-  <div class='pre p1 bg-darken-1 mt0'><%= signature(section) %></div>
+  <div class='pre p1 bg-darken-1 mt0 signature'><%= signature(section) %></div>
   <% } %>
   <% if (section.augments) { %>
     <p>
