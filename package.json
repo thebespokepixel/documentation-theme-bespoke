@@ -65,7 +65,12 @@
   },
   "xo": {
     "semicolon": false,
-    "esnext": true
+    "esnext": true,
+    "ignores": [
+      "index.js",
+      "assets/**/*.js",
+      "src/assets/**/*.js"
+    ]
   },
   "buildNumber": 0,
   "engines": {
