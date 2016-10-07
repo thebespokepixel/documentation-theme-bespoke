@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "prepublish": "./scripts/install-components",
@@ -12,7 +12,7 @@
   "main": "index.js",
   "files": [
     "assets",
-    "*._",
+    "parts",
     "index.js"
   ],
   "repository": {
@@ -65,7 +65,12 @@
   },
   "xo": {
     "semicolon": false,
-    "esnext": true
+    "esnext": true,
+    "ignores": [
+      "index.js",
+      "assets/**/*.js",
+      "src/assets/**/*.js"
+    ]
   },
   "buildNumber": 0,
   "engines": {
