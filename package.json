@@ -48,7 +48,7 @@
     "async": "^2.0.1",
     "autoprefixer": "^6.5.0",
     "ava": "^0.16.0",
-    "codeclimate-test-reporter": "^0.3.3",
+    "codeclimate-test-reporter": "^0.4.0",
     "cssnano": "^3.7.6",
     "deep-assign": "^2.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
