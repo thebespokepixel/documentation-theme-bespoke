@@ -61,7 +61,7 @@
     "shelljs": "^0.7.4",
     "snyk": "^1.19.1",
     "typopro-web": "^3.4.9",
-    "xo": "^0.16.0"
+    "xo": "^0.17.0"
   },
   "xo": {
     "semicolon": false,
