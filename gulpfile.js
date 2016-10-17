@@ -1,6 +1,6 @@
 /* ────────────────╮
  │ Theme assembler │
- ╰─────────────────┴────────────────────────────────────────────────────────────*/
+ ╰─────────────────┴─────────────────────────────────────────────────────────── */
 
 const gulp = require('gulp')
 const cordial = require('@thebespokepixel/cordial')()
@@ -10,7 +10,7 @@ const nib = require('nib')
 
 // clean using trash
 gulp.task('clean', cordial.shell({
-	source: ['./assets', './parts']
+	source: ['./assets', './parts', './src/vars.styl']
 }).trash())
 
 // transpilation/formatting
@@ -33,7 +33,7 @@ gulp.task('css-build', () => palette2oco.paletteReader(`src`)
 	.then(() => gulp.src('./src/style.styl')
 		.pipe(stylus({
 			'include css': true,
-			'compress': false,
+			'compress': true,
 			'use': [nib()]
 		}))
 		.pipe(gulp.dest('./assets/css'))
@@ -79,10 +79,10 @@ gulp.task('ava', cordial.test().ava(['test/*.js']))
 gulp.task('xo', cordial.test().xo(['src/*.js']))
 gulp.task('test', gulp.parallel('xo', 'ava'))
 
+gulp.task('full', gulp.series('assets', 'fonts', 'css-build', 'css', 'js'))
+
 // Hooks
-gulp.task('start-release', gulp.series('reset', 'master'))
-gulp.task('test-release', gulp.series('test'))
-gulp.task('finish-release', gulp.series('push-force'))
+gulp.task('start-release', gulp.series('reset', 'clean', 'full', 'master'))
 
 // Default
-gulp.task('default', gulp.series('bump', 'clean', 'assets', 'fonts', 'css-build', 'css', 'js', 'build'))
+gulp.task('default', gulp.series('bump', 'clean', 'full', 'build'))

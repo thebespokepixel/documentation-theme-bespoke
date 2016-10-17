@@ -15,7 +15,7 @@ var hljs = _interopDefault(require('highlight.js'));
 const createFormatters = documentation.util.createFormatters;
 const createLinkerStack = documentation.util.createLinkerStack;
 
-function index (comments, options, callback) {
+var index = function (comments, options, callback) {
 	const linkerStack = createLinkerStack(options).namespaceResolver(comments, namespace => {
 		const slugger = new GithubSlugger();
 		return '#' + slugger.slug(namespace);
@@ -54,7 +54,7 @@ function index (comments, options, callback) {
 				return prefix + section.name + formatters.parameters(section) + returns;
 			},
 			md(ast, inline) {
-				if (inline && ast && ast.children.length && ast.children[0].type === 'paragraph') {
+				if (inline && ast && ast.children.length > 0 && ast.children[0].type === 'paragraph') {
 					ast = {
 						type: 'root',
 						children: ast.children[0].children.concat(ast.children.slice(1))
@@ -88,6 +88,6 @@ function index (comments, options, callback) {
 			}), 'utf8')
 		})));
 	}));
-}
+};
 
 module.exports = index;

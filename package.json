@@ -1,13 +1,11 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A bespoke theme for documentation",
   "scripts": {
-    "prepublish": "./scripts/install-components",
     "test": "xo && snyk test && nyc ava",
     "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
-    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
-    "generate-test-fixtures": "scripts/generate-test-fixtures"
+    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html"
   },
   "main": "index.js",
   "files": [
@@ -41,7 +39,7 @@
     "vinyl-fs": "^2.0.0"
   },
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.16.4",
+    "@thebespokepixel/cordial": "^0.17.3",
     "@thebespokepixel/oco-colorvalue-ex": "^0.2.0",
     "@thebespokepixel/palette2oco": "^0.1.1",
     "ace-css": "^1.1.0",
@@ -61,7 +59,7 @@
     "shelljs": "^0.7.4",
     "snyk": "^1.19.1",
     "typopro-web": "^3.4.9",
-    "xo": "^0.16.0"
+    "xo": "^0.17.0"
   },
   "xo": {
     "semicolon": false,
@@ -74,6 +72,6 @@
   },
   "buildNumber": 0,
   "engines": {
-    "node": ">=4.0 <7.0"
+    "node": ">=4.0 <8.0"
   }
 }

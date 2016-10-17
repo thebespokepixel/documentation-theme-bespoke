@@ -3,43 +3,70 @@
 @require "vars"
 
 a
-  text-decoration: none
+  text-decoration none
   &:hover
-    cursor: pointer
+    cursor pointer
 
 .quiet
-  opacity: 0.7
+  opacity 0.7
 
 .sidebar
-  background: url(../images/logo-vertical.svg) left 4px bottom 4px no-repeat, linear-gradient(130deg, palette-sidebar-background, lighten(palette-sidebar-background, 10))
-  color: palette-sidebar-foreground
-  box-shadow: 0px 2px 12px palette-page-shadow
+  background url(../images/logo-vertical.svg) right 4px bottom 4px no-repeat, linear-gradient(130deg, palette-sidebar-background, lighten(palette-sidebar-background, 10))
+  color palette-sidebar-foreground
+  box-shadow 0px 2px 12px palette-page-shadow
   a
-    color: palette-sidebar-foreground
+    color palette-sidebar-foreground
     &:hover
-      color: palette-sidebar-hilite
+      color palette-sidebar-hilite
 
 .documentation
-  font-family: 'TypoPRO Fira Sans', sans-serif
-  color: palette-page-foreground
-  line-height: 1.5
-  background: palette-page-background
+  font-family 'TypoPRO Fira Sans', sans-serif
+  color palette-page-foreground
+  line-height 1.5
+  background palette-page-background
   a[href]:hover
-    text-decoration: underline
+    text-decoration underline
 
 .pre, pre, code, .code
-  font-family: 'TypoPRO Hack', monospace
-  font-size: 14px
+  font-family 'TypoPRO Hack', monospace
+
+.prose
+  code, .code
+    font-size 1rem
 
 .panel-title
-  font-size: 26px
+  font-size 1.5rem
+  line-height 2.5rem
   span
-    color: palette-page-hilite
+    color palette-page-hilite
     a
-      color: palette-page-hilite
+      color palette-page-hilite
 
 .minishadow
-  box-shadow: 0px 2px 6px palette-page-shadow
+  box-shadow 0px 2px 6px palette-page-shadow
 
 .signature
-  box-shadow: inset 0px 1px 4px palette-page-shadow
+  box-shadow inset 0px 1px 4px palette-page-shadow
+
+.border-bottom
+  border-bottom 1px solid palette-page-hilite
+
+a.github
+  background url(../images/github.svg) left 8px center no-repeat lighten(palette-github-background, 20)
+  background-size 1rem
+  font-size 0.9rem
+  font-weight 200
+  color palette-github-foreground
+  transition background-color 0.4s
+  &[href]:hover
+      text-decoration none
+      background-color palette-github-background
+
+.anchorjs-link
+  margin-left 0em !important
+  transition all .25s linear
+
+*:hover
+  & > .anchorjs-link
+    margin-left -1em !important
+

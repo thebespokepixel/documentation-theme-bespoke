@@ -35,7 +35,10 @@ page:
   oct/
     view: Stack
     backgroundColor: =background
-  background: #e0e0e0
-  foreground: #4a4a4a
-  shadow: =flat.50
+  background: hsv(75, 5, 90)
+  foreground: hsv(75, 20, 10)
+  shadow: hsva(75, 30, 20, 0.4)
   hilite: hsva(75, 60, 30, 0.3)
+github:
+  background: hsv(75, 20, 50)
+  foreground: hsv(75, 20, 90)
