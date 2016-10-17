@@ -11,8 +11,8 @@
 </head>
 <body class='m0 documentation'>
   <div class='flex'>
-    <div class='flex-column fixed top-0 bottom-0 px3 xs-hide overflow-auto max-height-100 sidebar'>
-      <h3 class='mb0 no-anchor'><%- options.name %></h3>
+    <div class='flex-column fixed top-0 bottom-0 px2 pt2 xs-hide overflow-auto max-height-100 sidebar'>
+      <h3 class='m0 no-anchor'><%- options.name %></h3>
       <div class='mb1'><code>v<%- options.version %></code></div>
       <input
         placeholder='Filter'
@@ -77,10 +77,10 @@
         <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
       </div>
     </div>
-    <div class='flex-column px3 xs-hide'>
+    <div class='flex-column px2 xs-hide'>
       <h3 class='mb0 no-anchor'><%- options.name %></h3>
     </div>
-    <div class='flex-auto px2'>
+    <div class='flex-auto px2 pt1'>
       <% docs.forEach(function(s) { %>
         <% if (s.kind !== 'note') { %>
           <%= renderSection({
@@ -89,7 +89,7 @@
             renderSectionList: renderSectionList
           }) %>
         <% } else { %>
-          <div class='keyline-top-not py2'><%=renderNote({ note: s })%></div>
+          <div class='keyline-top-not py1'><%=renderNote({ note: s })%></div>
         <% } %>
       <% }) %>
     </div>

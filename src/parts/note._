@@ -1,6 +1,6 @@
-<section class='pb2 clearfix'>
+<section class='py0 px2 clearfix'>
 
-  <h3 id='<%- note.namespace %>' class='mt0'>
+  <h3 id='<%- note.namespace %>' class='m0'>
     <%- note.name %>
   </h3>
 

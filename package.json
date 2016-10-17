@@ -3,11 +3,9 @@
   "version": "0.2.1",
   "description": "A bespoke theme for documentation",
   "scripts": {
-    "prepublish": "./scripts/install-components",
     "test": "xo && snyk test && nyc ava",
     "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
-    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
-    "generate-test-fixtures": "scripts/generate-test-fixtures"
+    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html"
   },
   "main": "index.js",
   "files": [
@@ -72,7 +70,7 @@
       "src/assets/**/*.js"
     ]
   },
-  "buildNumber": 0,
+  "buildNumber": 178,
   "engines": {
     "node": ">=4.0 <7.0"
   }
