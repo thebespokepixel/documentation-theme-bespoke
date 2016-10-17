@@ -70,7 +70,7 @@
       "src/assets/**/*.js"
     ]
   },
-  "buildNumber": 179,
+  "buildNumber": 181,
   "engines": {
     "node": ">=4.0 <8.0"
   }
