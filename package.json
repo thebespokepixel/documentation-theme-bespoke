@@ -41,7 +41,7 @@
     "vinyl-fs": "^2.0.0"
   },
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.16.4",
+    "@thebespokepixel/cordial": "^0.17.3",
     "@thebespokepixel/oco-colorvalue-ex": "^0.2.0",
     "@thebespokepixel/palette2oco": "^0.1.1",
     "ace-css": "^1.1.0",
