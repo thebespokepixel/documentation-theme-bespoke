@@ -15,7 +15,7 @@ var hljs = _interopDefault(require('highlight.js'));
 const createFormatters = documentation.util.createFormatters;
 const createLinkerStack = documentation.util.createLinkerStack;
 
-function index (comments, options, callback) {
+var index = function (comments, options, callback) {
 	const linkerStack = createLinkerStack(options).namespaceResolver(comments, namespace => {
 		const slugger = new GithubSlugger();
 		return '#' + slugger.slug(namespace);
@@ -88,6 +88,6 @@ function index (comments, options, callback) {
 			}), 'utf8')
 		})));
 	}));
-}
+};
 
 module.exports = index;
