@@ -24,3 +24,7 @@ exclude_paths:
 - bin/
 - scripts/
 - lib/
+- assets/
+- parts/
+- index.js
+- gulpfile.js
