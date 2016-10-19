@@ -29,32 +29,31 @@
   },
   "homepage": "https://github.com/documentationjs/documentation-theme-default",
   "dependencies": {
+    "@thebespokepixel/badges": "^0.1.8",
     "anchor-js": "^3.2.1",
     "concat-stream": "^1.5.0",
     "documentation": "^4.0.0-beta10",
     "github-slugger": "^1.1.1",
     "highlight.js": "^9.0.0",
     "lodash": "4.16.4",
+    "remark": "^6.0.1",
+    "remark-usage": "^4.0.1",
     "vinyl": "^2.0.0",
     "vinyl-fs": "^2.0.0"
   },
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.17.3",
+    "@thebespokepixel/cordial": "^0.17.7",
     "@thebespokepixel/oco-colorvalue-ex": "^0.2.0",
     "@thebespokepixel/palette2oco": "^0.1.1",
     "ace-css": "^1.1.0",
     "async": "^2.0.1",
-    "autoprefixer": "^6.5.0",
     "ava": "^0.16.0",
     "codeclimate-test-reporter": "^0.4.0",
-    "cssnano": "^3.7.6",
     "deep-assign": "^2.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-stylus": "^2.5.0",
     "nib": "^1.1.2",
     "nyc": "^8.3.0",
-    "poststylus": "^0.2.3",
-    "remark": "^6.0.1",
     "rollup-plugin-uglify": "^1.0.1",
     "shelljs": "^0.7.4",
     "snyk": "^1.19.1",
@@ -66,11 +65,10 @@
     "esnext": true,
     "ignores": [
       "index.js",
-      "assets/**/*.js",
-      "src/assets/**/*.js"
+      "assets/**/*.js"
     ]
   },
-  "buildNumber": 2,
+  "buildNumber": 109,
   "engines": {
     "node": ">=4.0 <8.0"
   }

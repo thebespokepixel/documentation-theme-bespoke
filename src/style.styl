@@ -70,3 +70,20 @@ a.github
   & > .anchorjs-link
     margin-left -1em !important
 
+.badges
+  p
+    display inline
+    margin-right 0.5rem
+    &:empty
+      display: none
+  br:last-of-type
+    display: none
+
+.note
+  h3
+    margin-top 0
+  pre
+    background-color lighten(palette-page-background, 10)
+    padding 0.5rem
+    border-radius 4px
+    box-shadow 0 1px 4px palette-page-shadow

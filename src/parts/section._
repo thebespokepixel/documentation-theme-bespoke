@@ -1,19 +1,19 @@
-<section class='py2 px3 mb2 clearfix bg-white rounded minishadow'>
+<section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
 
-  <% if (typeof nested === 'undefined') { %>
-  <div class='clearfix'>
-    <h3 class='left m0 panel-title' id='<%- slug(section.namespace) %>'>
+  <% if (typeof nested === "undefined") { %>
+  <div class="clearfix">
+    <h3 class="left m0 panel-title" id="<%- slug(section.namespace) %>">
       <%- section.name %>  <% if (section.returns) { %><span>→ <%= formatType(section.returns[0].type) %></span><% }%>
     </h3>
     <% if (section.context && section.context.github) { %>
-      <a class='pl3 pr1 right rounded github' href='<%= section.context.github %>'><%= section.context.path %></a>
+      <a class="pl3 pr1 right rounded github" href="<%= section.context.github %>"><%= section.context.path %></a>
     <% } %>
   </div>
   <% } %>
 
   <%= md(section.description) %>
-  <% if (section.kind === 'function') { %>
-  <div class='pre p1 bg-darken-1 mt0 signature'><%= signature(section) %></div>
+  <% if (section.kind === "function") { %>
+  <div class="pre p1 bg-darken-1 mt0 signature"><%= signature(section) %></div>
   <% } %>
   <% if (section.augments) { %>
     <p>
@@ -21,7 +21,7 @@
       <% if (section.augments) { %>
         <%= section.augments.map(function(tag) {
           return autolink(tag.name);
-        }).join(', ') %>
+        }).join(", ") %>
       <% } %>
     </p>
   <% } %>
@@ -33,35 +33,35 @@
   <% if (section.since) { %><div>Since: <%- section.since %></div><% }%>
 
   <% if (section.params) { %>
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
       <% section.params.forEach(function(param) { %>
-        <div class='space-bottom0'>
+        <div class="space-bottom0">
           <div>
-            <span class='code bold'><%- param.name%></span> <code class='quiet'>(<%= formatType(param.type) %><% if (param.default) { %>
+            <span class="code bold"><%- param.name%></span> <code class="quiet">(<%= formatType(param.type) %><% if (param.default) { %>
             (default <code><%- param.default %></code>)
             <% } %>)</code> <%= md(param.description, true) %>
           </div>
           <% if (param.properties) { %>
-          <table class='mt1 mb2 fixed-table h5 col-12'>
+          <table class="mt1 mb2 fixed-table h5 col-12">
             <colgroup>
-              <col width='30%' />
-              <col width='70%' />
+              <col width="30%" />
+              <col width="70%" />
             </colgroup>
             <thead>
-              <tr class='bold bg-darken-1'>
+              <tr class="bold bg-darken-1">
                 <th>Name</th>
                 <th>Description</th>
               </tr>
             </thead>
-            <tbody class='mt1'>
+            <tbody class="mt1">
               <% param.properties.forEach(function(property) { %>
                 <tr>
-                  <td class='break-word'><span class='code bold'><%- property.name %></span> <code class='quiet'><%= formatType(property.type) %></code>
+                  <td class="break-word"><span class="code bold"><%- property.name %></span> <code class="quiet"><%= formatType(property.type) %></code>
                   <% if (property.default) { %>
                     (default <code><%- property.default %></code>)
                   <% } %></td>
-                  <td class='break-word'><span><%= md(property.description, true) %></span></td>
+                  <td class="break-word"><span><%= md(property.description, true) %></span></td>
                 </tr>
               <% }) %>
             </tbody>
@@ -73,11 +73,11 @@
   <% } %>
 
   <% if (section.properties) { %>
-    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div class="py1 quiet mt1 prose-big">Properties</div>
     <div>
       <% section.properties.forEach(function(property) { %>
-        <div class='space-bottom0'>
-          <span class='code bold'><%- property.name%></span> <code class='quiet'>(<%= formatType(property.type) %>)</code>
+        <div class="space-bottom0">
+          <span class="code bold"><%- property.name%></span> <code class="quiet">(<%= formatType(property.type) %>)</code>
           <% if (property.default) { %>
             (default <code><%- property.default %></code>)
           <% } %><% if (property.description) {
@@ -101,7 +101,7 @@
 
   <% if (section.returns) { %>
     <% section.returns.forEach(function(ret) { %>
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <div class="py1 quiet mt1 prose-big">Returns</div>
       <code><%= formatType(ret.type) %></code><% if (ret.description) { %>:
         <%= md(ret.description, true) %>
       <% }%>
@@ -109,7 +109,7 @@
   <% } %>
 
   <% if (section.throws) { %>
-    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <div class="py1 quiet mt1 prose-big">Throws</div>
     <ul>
       <% section.throws.forEach(function(throws) { %>
         <li><%= formatType(throws.type) %>: <%= md(throws.description, true) %></li>
@@ -118,25 +118,25 @@
   <% } %>
 
   <% if (section.examples) { %>
-    <div class='py1 quiet mt1 prose-big'>Example</div>
+    <div class="py1 quiet mt1 prose-big">Example</div>
       <% section.examples.forEach(function(example) { %>
       <% if (example.caption) { %><%= md(example.caption) %><% } %>
-      <pre class='p1 overflow-auto rounded bg-darken-1'><%= highlight(example.description) %></pre>
+      <pre class="p1 overflow-auto rounded bg-darken-1"><%= highlight(example.description) %></pre>
     <% }) %>
   <% } %>
 
   <% if (section.members.static && section.members.static.length) { %>
-    <div class='py1 quiet mt1 prose-big'>Static Members</div>
-    <%= renderSectionList({ members: section.members.static, renderSection: renderSection, noun: 'Static Member' }) %>
+    <div class="py1 quiet mt1 prose-big">Static Members</div>
+    <%= renderSectionList({ members: section.members.static, renderSection: renderSection, noun: "Static Member" }) %>
   <% } %>
 
   <% if (section.members.instance && section.members.instance.length) { %>
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <%= renderSectionList({ members: section.members.instance, renderSection: renderSection, noun: 'Instance Member' }) %>
+    <div class="py1 quiet mt1 prose-big">Instance Members</div>
+    <%= renderSectionList({ members: section.members.instance, renderSection: renderSection, noun: "Instance Member" }) %>
   <% } %>
 
   <% if (section.members.events && section.members.events.length) { %>
-    <div class='py1 quiet mt1 prose-big'>Events</div>
-    <%= renderSectionList({ members: section.members.events, renderSection: renderSection, noun: 'Event' }) %>
+    <div class="py1 quiet mt1 prose-big">Events</div>
+    <%= renderSectionList({ members: section.members.events, renderSection: renderSection, noun: "Event" }) %>
   <% } %>
 </section>
