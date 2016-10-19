@@ -26,6 +26,18 @@ gulp.task('master', cordial.format({
 	dest: './index.js'
 }))
 
+gulp.task('site', cordial.format({
+	source: 'src/site.js',
+	format: 'iife',
+	plugins: {
+		uglify: {
+			enabled: true
+		}
+	}
+}).rollup.babel({
+	dest: './assets/js/site.js'
+}))
+
 gulp.task('css-build', () => palette2oco.paletteReader(`src`)
 	.load(['src/palette.oco'])
 	.then(palette2oco.oco2Vars)
@@ -79,7 +91,7 @@ gulp.task('ava', cordial.test().ava(['test/*.js']))
 gulp.task('xo', cordial.test().xo(['src/*.js']))
 gulp.task('test', gulp.parallel('xo', 'ava'))
 
-gulp.task('full', gulp.series('assets', 'fonts', 'css-build', 'css', 'js'))
+gulp.task('full', gulp.series('assets', 'fonts', 'css-build', 'css', 'site', 'js'))
 
 // Hooks
 gulp.task('start-release', gulp.series('reset', 'clean', 'full', 'master'))

@@ -1,10 +1,16 @@
-<section class='py0 px2 clearfix'>
-
-  <h3 id='<%- note.namespace %>' class='m0'>
-    <%- note.name %>
-  </h3>
-
-  <% if (note.description) { %>
-    <%= md(note.description) %>
-  <% } %>
+<section class="py0 px2 clearfix note">
+	<% if (note.name !== 'Usage') { %>
+	<h3 id="<%- note.namespace %>" class="m0">
+		<%- note.name %>
+	</h3>
+	<% } %>
+	<% if (note.description) { %>
+		<%= md(note.description) %>
+	<% } else {
+		if (note.example) {
+			usage(note.example, content => {
+				print(md(content))
+			})
+		}
+	} %>
 </section>
