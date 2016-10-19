@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "test": "xo && snyk test && nyc ava",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/documentationjs/documentation-theme-default",
   "dependencies": {
-    "@thebespokepixel/badges": "^0.1.8",
+    "@thebespokepixel/badges": "^0.1.10",
     "anchor-js": "^3.2.1",
     "concat-stream": "^1.5.0",
     "documentation": "^4.0.0-beta10",
