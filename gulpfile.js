@@ -95,6 +95,7 @@ gulp.task('full', gulp.series('assets', 'fonts', 'css-build', 'css', 'site', 'js
 
 // Hooks
 gulp.task('start-release', gulp.series('reset', 'clean', 'full', 'master'))
+gulp.task('post-flow-release-start', gulp.series('start-release', 'version-release'))
 
 // Default
 gulp.task('default', gulp.series('bump', 'clean', 'full', 'build'))
