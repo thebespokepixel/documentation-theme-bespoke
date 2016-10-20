@@ -68,7 +68,7 @@
       "assets/**/*.js"
     ]
   },
-  "buildNumber": 0,
+  "buildNumber": 1,
   "engines": {
     "node": ">=4.0 <8.0"
   }
