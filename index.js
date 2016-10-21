@@ -91,11 +91,13 @@ const index = function (comments, options, callback) {
 			}
 		}
 
-		sharedImports.imports.renderSectionList = _template(fs.readFileSync(path.join(__dirname, 'parts/section_list._'), 'utf8'), sharedImports)
-		sharedImports.imports.renderSection = _template(fs.readFileSync(path.join(__dirname, 'parts/section._'), 'utf8'), sharedImports)
-		sharedImports.imports.renderNote = _template(fs.readFileSync(path.join(__dirname, 'parts/note._'), 'utf8'), sharedImports)
+		const renderTemplate = source => _template(fs.readFileSync(path.join(__dirname, source), 'utf8'), sharedImports)
 
-		const pageTemplate = _template(fs.readFileSync(path.join(__dirname, 'parts/index._'), 'utf8'), sharedImports)
+		sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._')
+		sharedImports.imports.renderSection = renderTemplate('parts/section._')
+		sharedImports.imports.renderNote = renderTemplate('parts/note._')
+
+		const pageTemplate = renderTemplate('parts/index._')
 
 		vfs.src([path.join(__dirname, 'assets', '**')], {
 			base: __dirname
