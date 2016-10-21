@@ -78,7 +78,7 @@
         <a href="http://documentation.js.org/reading-documentation.html">Need help reading this?</a>
       </div>
     </div>
-    <div class="flex-column px2 xs-hide">
+    <div class="flex-column px2 xs-hide sidespace">
       <h3 class="mb0 no-anchor"><%- options.name %></h3>
     </div>
     <div class="flex-auto px2 pt1">
