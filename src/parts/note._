@@ -1,16 +1,11 @@
 <section class="py0 px2 clearfix note">
-	<% if (note.name !== 'Usage') { %>
-	<h3 id="<%- note.namespace %>" class="m0">
+	<h3 id="<%- kebabCase(note.namespace) %>" class="m0">
 		<%- note.name %>
 	</h3>
-	<% } %>
 	<% if (note.description) { %>
 		<%= md(note.description) %>
-	<% } else {
-		if (note.example) {
-			usage(note.example, content => {
-				print(md(content))
-			})
-		}
-	} %>
+	<% } %>
+	<% if (note.example) { %>
+		<%= md(usage(note.example)) %>
+	<% } %>
 </section>

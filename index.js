@@ -5,8 +5,9 @@ function _interopDefault(ex) {
 }
 
 const _template = _interopDefault(require('lodash/template'))
-const fs = _interopDefault(require('fs'))
-const path = _interopDefault(require('path'))
+const _kebabCase = _interopDefault(require('lodash/kebabCase'))
+const fs = require('fs')
+const path = require('path')
 const File = _interopDefault(require('vinyl'))
 const vfs = _interopDefault(require('vinyl-fs'))
 const concat = _interopDefault(require('concat-stream'))
@@ -15,7 +16,8 @@ const documentation = require('documentation')
 const hljs = _interopDefault(require('highlight.js'))
 const badges = _interopDefault(require('@thebespokepixel/badges'))
 const remark = _interopDefault(require('remark'))
-const addUsage = _interopDefault(require('remark-usage'))
+const gap = _interopDefault(require('remark-heading-gap'))
+const squeeze = _interopDefault(require('remark-squeeze-paragraphs'))
 
 const createFormatters = documentation.util.createFormatters
 const createLinkerStack = documentation.util.createLinkerStack
@@ -47,19 +49,15 @@ const index = function (comments, options, callback) {
 	badges('docs', true).then(badgesAST => {
 		const sharedImports = {
 			imports: {
+				kebabCase(str) {
+					return _kebabCase(str)
+				},
 				badges() {
 					return formatters.markdown(badgesAST)
 				},
-				usage(example, callback) {
-					remark().use(addUsage, {
-						example
-					}).process('### Usage', (err, vfile) => {
-						if (err) {
-							console.error(`Error: ${err}`)
-						} else {
-							callback(remark().parse(vfile.contents))
-						}
-					})
+				usage(example) {
+					const usage = fs.readFileSync(path.resolve(example))
+					return remark().use(gap).use(squeeze).parse(usage)
 				},
 				slug(str) {
 					const slugger = new GithubSlugger()

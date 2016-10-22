@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import {readFileSync} from 'fs'
+import {join, resolve} from 'path'
 import File from 'vinyl'
 import vfs from 'vinyl-fs'
 import _ from 'lodash'
@@ -9,7 +9,8 @@ import {util} from 'documentation'
 import hljs from 'highlight.js'
 import badges from '@thebespokepixel/badges'
 import remark from 'remark'
-import addUsage from 'remark-usage'
+import gap from 'remark-heading-gap'
+import squeeze from 'remark-squeeze-paragraphs'
 
 const createFormatters = util.createFormatters
 const createLinkerStack = util.createLinkerStack
@@ -44,19 +45,15 @@ export default function (comments, options, callback) {
 		.then(badgesAST => {
 			const sharedImports = {
 				imports: {
+					kebabCase(str) {
+						return _.kebabCase(str)
+					},
 					badges() {
 						return formatters.markdown(badgesAST)
 					},
-					usage(example, callback) {
-						remark().use(addUsage, {
-							example
-						}).process('### Usage', (err, vfile) => {
-							if (err) {
-								console.error(`Error: ${err}`)
-							} else {
-								callback(remark().parse(vfile.contents))
-							}
-						})
+					usage(example) {
+						const usage = readFileSync(resolve(example))
+						return remark().use(gap).use(squeeze).parse(usage)
 					},
 					slug(str) {
 						const slugger = new GithubSlugger()
@@ -88,7 +85,7 @@ export default function (comments, options, callback) {
 				}
 			}
 
-			const renderTemplate = source => _.template(fs.readFileSync(path.join(__dirname, source), 'utf8'), sharedImports)
+			const renderTemplate = source => _.template(readFileSync(join(__dirname, source), 'utf8'), sharedImports)
 
 			sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._')
 			sharedImports.imports.renderSection = renderTemplate('parts/section._')
@@ -97,7 +94,7 @@ export default function (comments, options, callback) {
 			const pageTemplate = renderTemplate('parts/index._')
 
 			// push assets into the pipeline as well.
-			vfs.src([path.join(__dirname, 'assets', '**')], {base: __dirname})
+			vfs.src([join(__dirname, 'assets', '**')], {base: __dirname})
 				.pipe(concat(files => {
 					callback(null, files.concat(new File({
 						path: 'index.html',
