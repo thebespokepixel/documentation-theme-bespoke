@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/documentationjs/documentation-theme-default",
   "dependencies": {
-    "@thebespokepixel/badges": "^0.2.2",
+    "@thebespokepixel/badges": "^0.2.3",
     "anchor-js": "^3.2.1",
     "concat-stream": "^1.5.0",
     "documentation": "^4.0.0-beta11",
@@ -66,10 +66,11 @@
     "esnext": true,
     "ignores": [
       "index.js",
+      "gulpfile.js",
       "assets/**/*.js"
     ]
   },
-  "buildNumber": 15,
+  "buildNumber": 16,
   "engines": {
     "node": ">=4.0 <8.0"
   }
