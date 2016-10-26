@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "test": "xo && snyk test && nyc ava",
@@ -70,7 +70,7 @@
       "assets/**/*.js"
     ]
   },
-  "buildNumber": 16,
+  "buildNumber": 0,
   "engines": {
     "node": ">=4.0 <8.0"
   }
