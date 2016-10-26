@@ -45,7 +45,7 @@
   "devDependencies": {
     "@thebespokepixel/cordial": "^0.17.7",
     "@thebespokepixel/oco-colorvalue-ex": "^0.2.0",
-    "@thebespokepixel/palette2oco": "^0.1.1",
+    "@thebespokepixel/palette2oco": "^0.1.4",
     "ace-css": "^1.1.0",
     "async": "^2.0.1",
     "ava": "^0.16.0",
