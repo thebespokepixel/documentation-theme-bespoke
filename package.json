@@ -35,7 +35,7 @@
     "documentation": "^4.0.0-beta11",
     "github-slugger": "^1.1.1",
     "highlight.js": "^9.0.0",
-    "lodash": "4.16.4",
+    "lodash": "4.16.5",
     "remark": "^6.2.0",
     "remark-heading-gap": "^2.0.1",
     "remark-squeeze-paragraphs": "^3.0.0",
