@@ -3,7 +3,7 @@
   "version": "0.3.2",
   "description": "A bespoke theme for documentation",
   "scripts": {
-    "test": "xo && snyk test && nyc ava",
+    "test": "xo && nyc ava",
     "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html"
   },
