@@ -45,8 +45,8 @@ gulp.task('css-build', () => palette2oco.paletteReader(`src`)
 	.then(() => gulp.src('./src/style.styl')
 		.pipe(stylus({
 			'include css': true,
-			'compress': true,
-			'use': [nib()]
+			compress: true,
+			use: [nib()]
 		}))
 		.pipe(gulp.dest('./assets/css'))
 	)
