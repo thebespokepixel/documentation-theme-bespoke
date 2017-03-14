@@ -37,7 +37,7 @@
     "highlight.js": "^9.0.0",
     "lodash": "^4.16.6",
     "remark": "^6.2.0",
-    "remark-heading-gap": "^2.0.1",
+    "remark-heading-gap": "^3.0.0",
     "remark-squeeze-paragraphs": "^3.0.0",
     "vinyl": "^2.0.0",
     "vinyl-fs": "^2.0.0"
