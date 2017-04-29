@@ -47,7 +47,7 @@
     "@thebespokepixel/oco-colorvalue-ex": "^0.2.0",
     "@thebespokepixel/palette2oco": "^0.1.4",
     "ace-css": "^1.1.0",
-    "async": "^2.0.1",
+    "async": "^2.4.0",
     "ava": "^0.17.0",
     "codeclimate-test-reporter": "^0.4.0",
     "deep-assign": "^2.0.0",
