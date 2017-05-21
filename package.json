@@ -55,7 +55,7 @@
     "gulp-stylus": "^2.5.0",
     "nib": "^1.1.2",
     "nyc": "^10.0.0",
-    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-plugin-uglify": "^2.0.1",
     "shelljs": "^0.7.4",
     "typopro-web": "^3.4.9",
     "xo": "^0.17.0"
