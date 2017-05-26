@@ -33,7 +33,7 @@
     "anchor-js": "^3.2.1",
     "concat-stream": "^1.5.0",
     "documentation": "^4.0.0-beta15",
-    "github-slugger": "^1.1.1",
+    "github-slugger": "^1.1.2",
     "highlight.js": "^9.0.0",
     "lodash": "^4.16.6",
     "remark": "^6.2.0",
