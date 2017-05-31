@@ -34,7 +34,7 @@
     "concat-stream": "^1.5.0",
     "documentation": "^4.0.0-beta15",
     "github-slugger": "^1.1.1",
-    "highlight.js": "^9.0.0",
+    "highlight.js": "^9.12.0",
     "lodash": "^4.16.6",
     "remark": "^6.2.0",
     "remark-heading-gap": "^2.0.1",
