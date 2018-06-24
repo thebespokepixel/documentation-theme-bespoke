@@ -12,9 +12,9 @@ const tocElements = document.getElementById('toc')
 const filterInput = document.getElementById('filter-input')
 
 filterInput.addEventListener('keyup', e => {
-	// enter key
+	// Enter key
 	if (e.keyCode === 13) {
-		// go to the first displayed item in the toc
+		// Go to the first displayed item in the toc
 		for (let i = 0; i < tocElements.length; i++) {
 			const element = tocElements[i]
 			if (!element.classList.contains('display-none')) {
@@ -34,7 +34,7 @@ filterInput.addEventListener('keyup', e => {
 
 	for (let i = 0; i < tocElements.length; i++) {
 		const element = tocElements[i]
-		const children = Array.from(element.getElementsByTagName('li'))
+		const children = [...element.getElementsByTagName('li')]
 		if (match(element) || children.some(match)) {
 			element.classList.remove('display-none')
 		} else {
@@ -76,7 +76,7 @@ function toggleSibling() {
 
 function showHashTarget(targetId) {
 	const hashTarget = document.getElementById(targetId)
-	// new target is hidden
+	// New target is hidden
 	if (hashTarget && hashTarget.offsetHeight === 0 &&
 		hashTarget.parentNode.parentNode.classList.contains('display-none')) {
 		hashTarget.parentNode.parentNode.classList.remove('display-none')
