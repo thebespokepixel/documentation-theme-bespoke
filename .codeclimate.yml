@@ -21,9 +21,6 @@ ratings:
   - "**.css"
 exclude_paths:
 - test/
-- bin/
-- scripts/
-- lib/
 - assets/
 - parts/
 - index.js
