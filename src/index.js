@@ -33,9 +33,6 @@ function formatSignature(section, formatters, isShort) {
 }
 
 export default function (comments, options) {
-	console.dir(comments)
-	console.dir(options)
-
 	const linkerStack = new LinkerStack(options)
 		.namespaceResolver(comments, namespace => {
 			const slugger = new GithubSlugger()

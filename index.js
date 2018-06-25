@@ -38,8 +38,6 @@ function formatSignature(section, formatters, isShort) {
 }
 
 function index (comments, options) {
-  console.dir(comments);
-  console.dir(options);
   var linkerStack = new LinkerStack(options).namespaceResolver(comments, function (namespace) {
     var slugger = new GithubSlugger();
     return '#' + slugger.slug(namespace);
