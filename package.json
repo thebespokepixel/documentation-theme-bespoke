@@ -72,8 +72,21 @@
       "assets/**/*.js"
     ]
   },
-  "buildNumber": 0,
   "engines": {
-    "node": ">=4.0 <9.0"
+    "node": ">=8.0"
+  },
+  "badges": {
+    "github": "MarkGriffiths",
+    "npm": "thebespokepixel",
+    "name": "badges",
+    "docs": [
+      "status"
+    ],
+    "providers": {
+      "status": {
+        "text": "beta",
+        "color": "blue"
+      }
+    }
   }
 }

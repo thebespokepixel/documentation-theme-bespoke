@@ -2,12 +2,12 @@ import test from 'ava'
 import remark from 'remark'
 import theme from '..'
 
-test('main', t => {
+test('main', async t => {
 	const comments = [
 		{
 			path: [],
 			context: {},
-			description: remark().parse('test'),
+			description: await remark().parse('test'),
 			members: {
 				static: [],
 				instance: []
@@ -21,8 +21,7 @@ test('main', t => {
 		}
 	]
 
-	theme(comments, {}, err => {
-		t.ifError(err)
-		t.pass()
-	})
+	const err = await theme(comments, {})
+	console.log(err)
+	t.pass()
 })

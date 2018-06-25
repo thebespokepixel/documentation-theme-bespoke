@@ -44,7 +44,7 @@ function index (comments, options) {
   });
   var formatters = createFormatters(linkerStack.link);
   hljs.configure(options.hljs || {});
-  return new Promise(function (res) {
+  return new Promise(function (resolve) {
     return badges('docs', true).then(function (badgesAST) {
       var sharedImports = {
         imports: {
@@ -102,7 +102,7 @@ function index (comments, options) {
       vfs.src([path.join(__dirname, 'assets', '**')], {
         base: __dirname
       }).pipe(concat(function (files) {
-        res(files.concat(new File({
+        resolve(files.concat(new File({
           path: 'index.html',
           contents: Buffer.from(pageTemplate({
             docs: comments,

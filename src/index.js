@@ -1,5 +1,7 @@
+/* eslint promise/prefer-await-to-then:0 */
+
 import {readFileSync} from 'fs'
-import {join, resolve} from 'path'
+import {join, resolve as resolvePath} from 'path'
 import File from 'vinyl'
 import vfs from 'vinyl-fs'
 import _ from 'lodash'
@@ -41,7 +43,7 @@ export default function (comments, options) {
 
 	hljs.configure(options.hljs || {})
 
-	return new Promise(res => {
+	return new Promise(resolve => {
 		return badges('docs', true)
 			.then(badgesAST => {
 				const sharedImports = {
@@ -53,7 +55,7 @@ export default function (comments, options) {
 							return formatters.markdown(badgesAST)
 						},
 						usage(example) {
-							const usage = readFileSync(resolve(example))
+							const usage = readFileSync(resolvePath(example))
 							return remark().use(gap).use(squeeze).parse(usage)
 						},
 						slug(str) {
@@ -98,7 +100,7 @@ export default function (comments, options) {
 				// Push assets into the pipeline as well.
 				vfs.src([join(__dirname, 'assets', '**')], {base: __dirname}).pipe(
 					concat(files => {
-						res(
+						resolve(
 							files.concat(
 								new File({
 									path: 'index.html',

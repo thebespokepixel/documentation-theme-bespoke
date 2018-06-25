@@ -13,8 +13,6 @@ const palette2oco = require('@thebespokepixel/palette2oco')
 const stylus = require('gulp-stylus')
 const nib = require('nib')
 
-console.dir(uglify)
-
 const external = [
 	'lodash/template',
 	'lodash/kebabCase',
@@ -38,7 +36,7 @@ const babelConfig = {
 		['@babel/preset-env', {
 			modules: false,
 			targets: {
-				node: '8.0.0'
+				node: "8"
 			}
 		}]
 	],
