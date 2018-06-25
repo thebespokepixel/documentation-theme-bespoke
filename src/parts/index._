@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title><%- options.name %> <%- options.version %> | Documentation</title>
+  <title><%- options.projectName %> <%- options.projectVersion %> | Documentation</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="assets/css/ace.min.css" rel="stylesheet">
   <link href="assets/fonts/TypoPRO-Hack/TypoPRO-Hack.css" type="text/css" rel="stylesheet" />
@@ -12,8 +12,8 @@
 <body class="m0 documentation">
   <div class="flex">
     <div class="flex-column fixed top-0 bottom-0 px2 pt2 max-height-100 sidebar">
-      <h3 class="m0 no-anchor"><%- options.name %></h3>
-      <div class="mb1"><code>v<%- options.version %></code></div>
+      <h3 class="m0 no-anchor"><%- options.projectName %></h3>
+      <div class="mb1"><code>v<%- options.projectVersion %></code></div>
       <input
         placeholder="Filter"
         id="filter-input"
@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="flex-column px2 sidespace">
-      <h3 class="m0 no-anchor"><%- options.name %></h3>
+      <h3 class="m0 no-anchor"><%- options.projectName %></h3>
     </div>
     <div class="flex-auto px2 pt1">
       <% docs.forEach(function(s) { %>
