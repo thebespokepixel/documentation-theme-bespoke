@@ -25,7 +25,7 @@ function formatSignature(section, formatters, isShort) {
 	} else if (section.kind !== 'function') {
 		return section.name
 	}
-	if (!isShort && section.returns) {
+	if (!isShort && section.returns && section.returns.length > 0) {
 		returns = ' → ' +
 			formatters.type(section.returns[0].type)
 	}
