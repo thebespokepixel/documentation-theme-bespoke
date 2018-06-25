@@ -30,7 +30,7 @@ function formatSignature(section, formatters, isShort) {
     return section.name;
   }
 
-  if (!isShort && section.returns) {
+  if (!isShort && section.returns && section.returns.length > 0) {
     returns = ' → ' + formatters.type(section.returns[0].type);
   }
 
