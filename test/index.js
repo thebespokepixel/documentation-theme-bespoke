@@ -1,8 +1,10 @@
 import test from 'ava'
+// Imports disabled
 // import remark from 'remark'
 // import theme from '..'
 
-test('main', async t => {
+test('main', t => {
+	// Fix test
 	// const comments = [
 	// 	{
 	// 		path: [],
