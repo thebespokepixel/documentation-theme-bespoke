@@ -1,5 +1,5 @@
 /* eslint-env browser */
-/* eslint new-cap:0,no-undef:0 */
+/* eslint new-cap:0,no-undef:0,unicorn/prefer-query-selector:0 */
 /* global anchors */
 
 // add anchor links to headers
@@ -75,7 +75,7 @@ function toggleSibling() {
 }
 
 function showHashTarget(targetId) {
-	const hashTarget = document.querySelector(`#${targetId}`)
+	const hashTarget = document.getElementById(targetId)
 	// New target is hidden
 	if (hashTarget && hashTarget.offsetHeight === 0 &&
 		hashTarget.parentNode.parentNode.classList.contains('display-none')) {
