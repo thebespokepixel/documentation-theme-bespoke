@@ -1,4 +1,5 @@
 /* eslint-env browser */
+/* eslint new-cap:0,no-undef:0 */
 /* global anchors */
 
 // add anchor links to headers
@@ -98,3 +99,64 @@ function preOpen() {
 	showHashTarget(this.hash.substring(1))
 }
 
+const splitLeft = document.querySelector('#split-left')
+const splitRight = document.querySelector('#split-right')
+// TODO const splitParent = splitLeft.parentNode
+// TODO const cwWithSb = splitLeft.clientWidth
+splitLeft.style.overflow = 'hidden'
+// TODO const cwWithoutSb = splitLeft.clientWidth
+splitLeft.style.overflow = ''
+
+Split(['#split-left', '#split-right'], {
+	elementStyle(dimension, size, gutterSize) {
+		return {
+			'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'
+		}
+	},
+	gutterStyle(dimension, gutterSize) {
+		return {
+			'flex-basis': gutterSize + 'px'
+		}
+	},
+	gutterSize: 20,
+	sizes: [20, 80]
+})
+
+// Chrome doesn't remember scroll position properly so do it ourselves.
+// Also works on Firefox and Edge.
+
+function updateState() {
+	history.replaceState(
+		{
+			leftTop: splitLeft.scrollTop,
+			rightTop: splitRight.scrollTop
+		},
+		document.title
+	)
+}
+
+function loadState(ev) {
+	if (ev) {
+		// Edge doesn't replace change history.state on popstate.
+		history.replaceState(ev.state, document.title)
+	}
+	if (history.state) {
+		splitLeft.scrollTop = history.state.leftTop
+		splitRight.scrollTop = history.state.rightTop
+	}
+}
+
+window.addEventListener('load', () => {
+	// Restore after Firefox scrolls to hash.
+	setTimeout(() => {
+		loadState()
+		// Update with initial scroll position.
+		updateState()
+		// Update scroll positions only after we've loaded because Firefox
+		// emits an initial scroll event with 0.
+		splitLeft.addEventListener('scroll', updateState)
+		splitRight.addEventListener('scroll', updateState)
+	}, 1)
+})
+
+window.addEventListener('popstate', loadState)

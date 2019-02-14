@@ -1,31 +1,35 @@
-
-<section class='p2 mb2 clearfix bg-white minishadow'>
+<section class='p2 pl3 mb2 ml2 mr2 clearfix bg-white rounded minishadow'>
 
   <% if (typeof nested === 'undefined' || (section.context && section.context.github)) { %>
   <div class='clearfix'>
-    <% if (typeof nested === 'undefined') { %>
-    <h3 class='fl m0' id='<%- slug(section.namespace) %>'>
-      <%- section.name %>
-    </h3>
-    <% } %>
     <% if (section.context && section.context.github) { %>
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='<%= section.context.github.url %>'>
+      <a class='pl3 pr1 right rounded github' href='<%= section.context.github.url %>'>
       <span><%= section.context.github.path %></span>
       </a>
+    <% } %>
+    <% if (typeof nested === 'undefined') { %>
+    <h3 class='left m0 panel-title' id='<%- slug(section.namespace) %>'>
+      <%- section.name %>
+      <% if (section.returns && section.returns.length > 0) { %>
+      <span> → <%= formatType(section.returns[0].type) %></span>
+      <% } %>
+    </h3>
     <% } %>
   </div>
   <% } %>
 
   <%= md(section.description) %>
 
-  <div class='pre p1 fill-light mt0'><%= signature(section) %></div>
+  <% if (section.kind !== "note") { %>
+    <div class='pre p1 bg-darken-1 mt0 rounded signature'><%= signature(section) %></div>
+  <% } %>
   <% if (section.type) { %>
     <p>
       Type:
       <%= formatType(section.type) %>
     </p>
   <% } %>
-  <% if (section.augments.length) { %>
+  <% if (section.augments && section.augments.length) { %>
     <p>
       Extends
       <% if (section.augments) { %>
@@ -43,7 +47,7 @@
   <% if (section.copyright) { %><div>Copyright: <%= md(section.copyright, true) %></div><% }%>
   <% if (section.since) { %><div>Since: <%- section.since %></div><% }%>
 
-  <% if (section.params.length) { %>
+  <% if (section.params && section.params.length) { %>
     <div class='py1 quiet mt1 prose-big'>Parameters</div>
     <div class='prose'>
       <% section.params.forEach(function(param) { %>
@@ -80,7 +84,7 @@
     </div>
   <% } %>
 
-  <% if (section.properties.length) { %>
+  <% if (section.properties && section.properties.length) { %>
     <div class='py1 quiet mt1 prose-big'>Properties</div>
     <div>
       <% section.properties.forEach(function(property) { %>
@@ -107,7 +111,7 @@
     </div>
   <% } %>
 
-  <% if (section.returns.length) { %>
+  <% if (section.returns && section.returns.length) { %>
     <% section.returns.forEach(function(ret) { %>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><%= formatType(ret.type) %></code><% if (ret.description) { %>:
@@ -116,7 +120,7 @@
     <% }) %>
   <% } %>
 
-  <% if (section.throws.length) { %>
+  <% if (section.throws && section.throws.length) { %>
     <div class='py1 quiet mt1 prose-big'>Throws</div>
     <ul>
       <% section.throws.forEach(function(throws) { %>
@@ -125,11 +129,11 @@
     </ul>
   <% } %>
 
-  <% if (section.examples.length) { %>
+  <% if (section.examples && section.examples.length) { %>
     <div class='py1 quiet mt1 prose-big'>Example</div>
     <% section.examples.forEach(function(example) { %>
       <% if (example.caption) { %><p><%= md(example.caption) %></p><% } %>
-      <pre class='p1 overflow-auto round fill-light'><%= highlight(example.description) %></pre>
+      <pre class='p1 overflow-auto rounded bg-darken-1'><%= highlight(example.description) %></pre>
     <% }) %>
   <% } %>
 

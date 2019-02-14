@@ -11,7 +11,7 @@ a
   opacity 0.7
 
 .sidebar
-  background url(../images/logo-vertical.svg) right 4px bottom 4px no-repeat, linear-gradient(130deg, palette-sidebar-background, lighten(palette-sidebar-background, 10))
+  background url(../images/logo-vertical.svg) right 4px bottom 4px no-repeat, linear-gradient(130deg, palette-sidebar-background, lighten(palette-sidebar-background, 20))
   color palette-sidebar-foreground
   box-shadow 0px 2px 12px palette-page-shadow
   h3
@@ -99,3 +99,15 @@ a.github
     padding 0.5rem
     border-radius 4px
     box-shadow 0 1px 4px palette-page-shadow
+
+.gutter
+  background-color: lighten(palette-sidebar-background, 20)
+  background-repeat: no-repeat
+  background-position: 50%
+  &.gutter-vertical
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=')
+    cursor: ns-resize
+  &.gutter-horizontal
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==')
+    cursor: ew-resize
+

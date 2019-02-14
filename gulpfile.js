@@ -9,26 +9,14 @@ const rollup = require('gulp-better-rollup')
 const babel = require('rollup-plugin-babel')
 const {uglify} = require('rollup-plugin-uglify')
 const lodash = require('babel-plugin-lodash')
+const resolve = require('rollup-plugin-node-resolve')
+const commonjs = require('rollup-plugin-commonjs')
+const json = require('rollup-plugin-json')
 const palette2oco = require('@thebespokepixel/palette2oco')
 const stylus = require('gulp-stylus')
 const nib = require('nib')
 
-const external = [
-	'lodash/template',
-	'lodash/kebabCase',
-	'fs',
-	'path',
-	'vinyl',
-	'vinyl-fs',
-	'concat-stream',
-	'github-slugger',
-	'documentation',
-	'highlight.js',
-	'@thebespokepixel/badges',
-	'remark',
-	'remark-heading-gap',
-	'remark-squeeze-paragraphs'
-]
+const external = id => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
 
 const babelConfig = {
 	plugins: [lodash],
@@ -59,7 +47,7 @@ gulp.task('build', () =>
 	gulp.src('src/index.js')
 		.pipe(rollup({
 			external,
-			plugins: [babel(babelConfig)]
+			plugins: [resolve(), json({preferConst: true}), commonjs(), babel(babelConfig)]
 		}, {
 			format: 'cjs'
 		}))
@@ -70,7 +58,7 @@ gulp.task('build', () =>
 gulp.task('site', () =>
 	gulp.src('src/site.js')
 		.pipe(rollup({
-			plugins: [babel(babelWebConfig), uglify()]
+			plugins: [resolve(), json({preferConst: true}), commonjs(), babel(babelWebConfig), uglify()]
 		}, {
 			format: 'iife'
 		}))
@@ -104,7 +92,8 @@ gulp.task('assets', gulp.parallel(
 	() => gulp.src('node_modules/typopro-web/web/TypoPRO-Hack/*').pipe(gulp.dest('./assets/fonts/TypoPRO-Hack')),
 	() => gulp.src('node_modules/typopro-web/web/TypoPRO-FiraSans/*').pipe(gulp.dest('./assets/fonts/TypoPRO-FiraSans')),
 	() => gulp.src('node_modules/anchor-js/anchor.min.js').pipe(gulp.dest('./assets/js/')),
-	() => gulp.src('node_modules/ace-css/css/ace.min.css').pipe(gulp.dest('./assets/css/'))
+	() => gulp.src('node_modules/ace-css/css/ace.min.css').pipe(gulp.dest('./assets/css/')),
+	() => gulp.src('node_modules/split.js/dist/split.min.js').pipe(gulp.dest('./assets/js/'))
 ))
 
 // Default
