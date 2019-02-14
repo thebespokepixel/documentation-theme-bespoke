@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/documentationjs/documentation-theme-default",
   "dependencies": {
-    "@thebespokepixel/badges": "^0.3.3",
+    "@thebespokepixel/badges": "^0.3.4",
     "anchor-js": "^4.2.0",
     "concat-stream": "^1.6.2",
     "documentation": "^8.1.2",
