@@ -31,10 +31,12 @@ function formatSignature(section, formatters, isShort) {
 	} else if (!isFunction(section)) {
 		return section.name
 	}
+
 	if (!isShort && section.returns && section.returns.length > 0) {
 		returns = ' → ' +
 			formatters.type(section.returns[0].type)
 	}
+
 	return prefix + section.name + formatters.parameters(section, isShort) + returns
 }
 
@@ -80,6 +82,7 @@ export default async function (comments, config) {
 						children: ast.children[0].children.concat(ast.children.slice(1))
 					}
 				}
+
 				return formatters.markdown(ast)
 			},
 			formatType: formatters.type,
@@ -88,6 +91,7 @@ export default async function (comments, config) {
 				if (config.hljs && config.hljs.highlightAuto) {
 					return hljs.highlightAuto(example).value
 				}
+
 				return hljs.highlight('js', example).value
 			}
 		}
