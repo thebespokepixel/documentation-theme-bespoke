@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "test": "xo && nyc ava",
