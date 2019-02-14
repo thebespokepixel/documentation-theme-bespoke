@@ -7,10 +7,10 @@ anchors.options.placement = 'left'
 anchors.add('h3').remove('.no-anchor')
 
 // Filter UI
-const tocElements = document.getElementById('toc')
-	.getElementsByTagName('li')
+const tocElements = document.querySelector('toc')
+	.querySelectorAll('li')
 
-const filterInput = document.getElementById('filter-input')
+const filterInput = document.querySelector('filter-input')
 
 filterInput.addEventListener('keyup', e => {
 	// Enter key
@@ -35,7 +35,7 @@ filterInput.addEventListener('keyup', e => {
 
 	for (let i = 0; i < tocElements.length; i++) {
 		const element = tocElements[i]
-		const children = [...element.getElementsByTagName('li')]
+		const children = [...element.querySelectorAll('li')]
 		if (match(element) || children.some(match)) {
 			element.classList.remove('display-none')
 		} else {
@@ -44,7 +44,7 @@ filterInput.addEventListener('keyup', e => {
 	}
 })
 
-const toggles = document.getElementsByClassName('toggle-step-sibling')
+const toggles = document.querySelectorAll('toggle-step-sibling')
 for (let i = 0; i < toggles.length; i++) {
 	toggles[i].addEventListener('click', toggleStepSibling)
 }
@@ -60,23 +60,23 @@ function formatDisclosure(source, target, _class) {
 }
 
 function toggleStepSibling() {
-	const stepSibling = this.parentNode.parentNode.parentNode.getElementsByClassName('toggle-target')[0]
+	const stepSibling = this.parentNode.parentNode.parentNode.querySelectorAll('toggle-target')[0]
 	formatDisclosure(stepSibling, stepSibling, 'display-none')
 }
 
-const items = document.getElementsByClassName('toggle-sibling')
+const items = document.querySelectorAll('toggle-sibling')
 for (let j = 0; j < items.length; j++) {
 	items[j].addEventListener('click', toggleSibling)
 }
 
 function toggleSibling() {
-	const stepSibling = this.parentNode.getElementsByClassName('toggle-target')[0]
-	const icon = this.getElementsByClassName('icon')[0]
+	const stepSibling = this.parentNode.querySelectorAll('toggle-target')[0]
+	const icon = this.querySelectorAll('icon')[0]
 	formatDisclosure(stepSibling, icon, 'display-none')
 }
 
 function showHashTarget(targetId) {
-	const hashTarget = document.getElementById(targetId)
+	const hashTarget = document.querySelector(targetId)
 	// New target is hidden
 	if (hashTarget && hashTarget.offsetHeight === 0 &&
 		hashTarget.parentNode.parentNode.classList.contains('display-none')) {
@@ -90,7 +90,7 @@ window.addEventListener('hashchange', () => {
 
 showHashTarget(location.hash.substring(1))
 
-const toclinks = document.getElementsByClassName('pre-open')
+const toclinks = document.querySelectorAll('pre-open')
 for (let k = 0; k < toclinks.length; k++) {
 	toclinks[k].addEventListener('mousedown', preOpen, false)
 }
@@ -140,6 +140,7 @@ function loadState(ev) {
 		// Edge doesn't replace change history.state on popstate.
 		history.replaceState(ev.state, document.title)
 	}
+
 	if (history.state) {
 		splitLeft.scrollTop = history.state.leftTop
 		splitRight.scrollTop = history.state.rightTop
