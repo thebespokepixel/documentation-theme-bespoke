@@ -9,9 +9,7 @@ anchors.add('h3').remove('.no-anchor')
 // Filter UI
 const tocElements = document.querySelector('#toc').querySelectorAll('li')
 
-const filterInput = document.querySelector('#filter-input')
-
-filterInput.addEventListener('keyup', e => {
+document.querySelector('#filter-input').addEventListener('keyup', e => {
 	// Enter key
 	if (e.keyCode === 13) {
 		// Go to the first displayed item in the toc
@@ -26,10 +24,12 @@ filterInput.addEventListener('keyup', e => {
 
 	let match = () => true
 
-	const value = filterInput.value.toLowerCase()
+	const value = document.querySelector('#filter-input').value.toLowerCase()
 
 	if (!value.match(/^\s*$/)) {
-		match = element => element.firstChild.innerHTML.toLowerCase().indexOf(value) !== -1
+		match = element =>
+			element.firstChild.innerHTML &&
+			element.firstChild.innerHTML.toLowerCase().indexOf(value) !== -1
 	}
 
 	for (let i = 0; i < tocElements.length; i++) {
@@ -43,35 +43,23 @@ filterInput.addEventListener('keyup', e => {
 	}
 })
 
-const toggles = document.querySelectorAll('.toggle-step-sibling')
+const toggles = document.querySelectorAll('.toggle-sibling')
+
 for (let i = 0; i < toggles.length; i++) {
-	toggles[i].addEventListener('click', toggleStepSibling)
-}
-
-function formatDisclosure(source, target, _class) {
-	if (source.classList.contains(_class)) {
-		source.classList.remove(_class)
-		target.innerHTML = '▾'
-	} else {
-		source.classList.add(_class)
-		target.innerHTML = '▸'
-	}
-}
-
-function toggleStepSibling() {
-	const stepSibling = this.parentNode.parentNode.parentNode.querySelectorAll('.toggle-target')[0]
-	formatDisclosure(stepSibling, stepSibling, 'display-none')
-}
-
-const items = document.querySelectorAll('toggle-sibling')
-for (let j = 0; j < items.length; j++) {
-	items[j].addEventListener('click', toggleSibling)
+	toggles[i].addEventListener('click', toggleSibling)
 }
 
 function toggleSibling() {
-	const stepSibling = this.parentNode.querySelectorAll('.toggle-target')[0]
+	const stepSibling = this.parentNode.querySelectorAll('.toggle-target')[0];
 	const icon = this.querySelectorAll('.icon')[0]
-	formatDisclosure(stepSibling, icon, 'display-none')
+	const klass = 'display-none'
+	if (stepSibling.classList.contains(klass)) {
+		stepSibling.classList.remove(klass)
+		icon.innerHTML = '▾'
+	} else {
+		stepSibling.classList.add(klass)
+		icon.innerHTML = '▸'
+	}
 }
 
 function showHashTarget(targetId) {
