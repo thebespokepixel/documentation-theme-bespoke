@@ -50,7 +50,7 @@ for (let i = 0; i < toggles.length; i++) {
 }
 
 function toggleSibling() {
-	const stepSibling = this.parentNode.querySelectorAll('.toggle-target')[0];
+	const stepSibling = this.parentNode.querySelectorAll('.toggle-target')[0]
 	const icon = this.querySelectorAll('.icon')[0]
 	const klass = 'display-none'
 	if (stepSibling.classList.contains(klass)) {
