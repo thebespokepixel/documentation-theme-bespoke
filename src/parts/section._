@@ -2,11 +2,6 @@
 
   <% if (typeof nested === 'undefined' || (section.context && section.context.github)) { %>
   <div class='clearfix'>
-    <% if (section.context && section.context.github) { %>
-      <a class='pl3 pr1 right rounded github' href='<%= section.context.github.url %>'>
-      <span><%= section.context.github.path %></span>
-      </a>
-    <% } %>
     <% if (typeof nested === 'undefined') { %>
     <h3 class='left m0 panel-title' id='<%- slug(section.namespace) %>'>
       <%- section.name %>
@@ -14,6 +9,11 @@
       <span> → <%= formatType(section.returns[0].type) %></span>
       <% } %>
     </h3>
+    <% } %>
+    <% if (section.context && section.context.github) { %>
+      <a class='pl3 pr1 right rounded github' href='<%= section.context.github.url %>'>
+      <span><%= section.context.github.path %></span>
+      </a>
     <% } %>
   </div>
   <% } %>
