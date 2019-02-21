@@ -11,6 +11,8 @@
 
 [![Greenkeeper](https://badges.greenkeeper.io/MarkGriffiths/documentation-theme-bespoke.svg)](https://greenkeeper.io/ "Greenkeeper") [![David-developer](https://img.shields.io/david/dev/MarkGriffiths/documentation-theme-bespoke.svg?branch=master&style=flat)](https://david-dm.org/MarkGriffiths/documentation-theme-bespoke/master#info=devDependencies "David-developer")   
 
+![bespoke-theme][screengrab]
+
 
 ## Usage
 
@@ -19,3 +21,5 @@
 ```shell
 npm install --dev documentation-theme-bespoke
 ```
+
+[screengrab]: https://raw.githubusercontent.com/MarkGriffiths/documentation-theme-bespoke/master/media/bespoke-theme.png
