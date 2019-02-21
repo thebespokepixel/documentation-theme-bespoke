@@ -4,6 +4,10 @@
 
 ${badges}
 
+![bespoke-theme][screengrab]
+
 ## Usage
 
 ${usage}
+
+[screengrab]: https://raw.githubusercontent.com/MarkGriffiths/documentation-theme-bespoke/master/media/bespoke-theme.png
