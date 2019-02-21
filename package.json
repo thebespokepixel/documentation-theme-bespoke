@@ -4,6 +4,7 @@
   "description": "A bespoke theme for documentation",
   "scripts": {
     "test": "xo && nyc ava",
+    "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html"
   },
   "main": "index.js",
@@ -81,15 +82,31 @@
   "badges": {
     "github": "MarkGriffiths",
     "npm": "thebespokepixel",
-    "name": "badges",
-    "docs": [
-      "status"
-    ],
+    "name": "documentation-theme-bespoke",
+    "codeclimate": "43d4085fbdef2a26beec",
     "providers": {
       "status": {
         "text": "beta",
         "color": "blue"
       }
+    },
+    "readme": {
+      "Status": [
+        [
+          "status",
+          "npm",
+          "travis",
+          "david"
+        ],
+        [
+          "code-climate",
+          "snyk"
+        ]
+      ],
+      "Developer": [
+        "greenkeeper",
+        "david-dev"
+      ]
     }
   }
 }
