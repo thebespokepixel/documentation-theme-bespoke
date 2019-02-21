@@ -1,5 +1,7 @@
 # Bespoke Documentation Theme
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MarkGriffiths/documentation-theme-bespoke.svg)](https://greenkeeper.io/)
+
 > A smart and tidy documentation theme by The Bespoke Pixel
 >
 > [![Build Status][build-badge]][travis]
