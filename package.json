@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/documentationjs/documentation-theme-default",
   "dependencies": {
-    "@thebespokepixel/badges": "^1.0.2",
+    "@thebespokepixel/badges": "^1.0.3",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
     "documentation": "^9.1.1",
@@ -44,8 +44,8 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
-    "@thebespokepixel/oco-colorvalue-ex": "^1.0.0",
-    "@thebespokepixel/palette2oco": "^1.0.0",
+    "@thebespokepixel/oco-colorvalue-ex": "^1.0.1",
+    "@thebespokepixel/palette2oco": "^1.0.2",
     "ace-css": "^1.1.0",
     "acorn": "^6.1.0",
     "ava": "^1.2.1",
