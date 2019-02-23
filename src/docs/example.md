@@ -1,5 +1,5 @@
 ### Installation
 
 ```shell
-npm install --dev documentation documentation-theme-bespoke
+npm install --dev documentation-theme-bespoke
 ```

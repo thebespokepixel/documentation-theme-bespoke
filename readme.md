@@ -19,7 +19,7 @@
 ### Installation
 
 ```shell
-npm install --dev documentation documentation-theme-bespoke
+npm install --dev documentation-theme-bespoke
 ```
 
 [screengrab]: https://raw.githubusercontent.com/MarkGriffiths/documentation-theme-bespoke/master/media/bespoke-theme.png
