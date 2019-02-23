@@ -5,6 +5,7 @@
   "scripts": {
     "test": "xo && nyc ava",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
+    "doc-build": "echo 'Building docs...'",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html"
   },
   "main": "index.js",
