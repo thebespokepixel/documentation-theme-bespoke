@@ -20,9 +20,7 @@
 
   <%= md(section.description) %>
 
-  <% if (section.kind !== "note") { %>
-    <div class='pre p1 bg-darken-1 mt0 rounded signature'><%= signature(section) %></div>
-  <% } %>
+  <div class='pre p1 bg-darken-1 mt0 rounded signature'><%= signature(section) %></div>
   <% if (section.type) { %>
     <p>
       Type:
