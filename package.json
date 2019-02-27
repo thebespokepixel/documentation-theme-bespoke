@@ -33,9 +33,9 @@
     "@thebespokepixel/badges": "^1.0.6",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
-    "documentation": "^9.2.0",
+    "documentation": "^9.2.1",
     "github-slugger": "^1.2.1",
-    "highlight.js": "^9.14.2",
+    "highlight.js": "^9.15.6",
     "lodash": "^4.17.11",
     "remark": "^10.0.1",
     "remark-heading-gap": "^3.1.0",
@@ -44,8 +44,8 @@
     "vinyl-fs": "^3.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "@thebespokepixel/oco-colorvalue-ex": "^4.0.0",
     "@thebespokepixel/palette2oco": "^1.0.3",
     "ace-css": "^1.1.0",
