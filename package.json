@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "A bespoke theme for documentation",
   "scripts": {
     "test": "xo && nyc ava",
@@ -33,7 +33,7 @@
     "@thebespokepixel/badges": "^1.0.6",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
-    "documentation": "^9.2.1",
+    "documentation": "^9.3.0",
     "github-slugger": "^1.2.1",
     "highlight.js": "^9.15.6",
     "lodash": "^4.17.11",
