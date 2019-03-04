@@ -52,7 +52,7 @@
     "ava": "^1.2.1",
     "babel-plugin-lodash": "^3.3.4",
     "gulp": "^4.0.0",
-    "gulp-better-rollup": "^3.4.0",
+    "gulp-better-rollup": "^4.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-rename": "^1.4.0",
     "gulp-stylus": "^2.7.0",
