@@ -1,7 +1,3 @@
-/* ─────────────╮
- │ gulp/cordial │
- ╰──────────────┴────────────────────────────────────────────────────────────── */
-
 const gulp = require('gulp')
 const rename = require('gulp-rename')
 const clean = require('gulp-clean')
@@ -16,7 +12,7 @@ const palette2oco = require('@thebespokepixel/palette2oco')
 const stylus = require('gulp-stylus')
 const nib = require('nib')
 
-const external = id => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
+const external = id => !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
 
 const babelConfig = {
 	plugins: [lodash],
