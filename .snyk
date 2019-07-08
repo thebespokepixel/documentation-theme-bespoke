@@ -1,0 +1,82 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - documentation > @babel/plugin-proposal-decorators > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/generator > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > truwrap > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > truwrap > term-ng > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > verbosity > term-ng > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > @thebespokepixel/string > term-ng > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > term-ng > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > @thebespokepixel/string > term-ng > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > verbosity > term-ng > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > @thebespokepixel/string > term-ng > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > @thebespokepixel/string > term-ng > trucolor > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > verbosity > term-ng > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > truwrap > @thebespokepixel/string > term-ng > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > verbosity > term-ng > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > verbosity > term-ng > trucolor > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > truwrap > verbosity > term-ng > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > verbosity > term-ng > truwrap > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > @thebespokepixel/string > term-ng > truwrap > trucolor > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > @thebespokepixel/string > term-ng > truwrap > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > term-ng > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/preset-env > @babel/plugin-transform-modules-umd > @babel/helper-module-transforms > @babel/template > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > verbosity > term-ng > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > verbosity > term-ng > trucolor > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > @thebespokepixel/string > term-ng > trucolor > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - '@thebespokepixel/badges > trucolor > @thebespokepixel/string > term-ng > truwrap > @thebespokepixel/n-selector > lodash':
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'
+    - documentation > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2019-07-08T04:42:43.706Z'

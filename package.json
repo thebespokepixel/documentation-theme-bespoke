@@ -6,7 +6,9 @@
     "test": "xo && nyc ava",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "doc-build": "echo 'Building docs...'",
-    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html"
+    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "main": "index.js",
   "files": [
@@ -41,7 +43,8 @@
     "remark-heading-gap": "^3.1.0",
     "remark-squeeze-paragraphs": "^3.0.3",
     "vinyl": "^2.2.0",
-    "vinyl-fs": "^3.0.3"
+    "vinyl-fs": "^3.0.3",
+    "snyk": "^1.192.3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -109,5 +112,6 @@
         "david-dev"
       ]
     }
-  }
+  },
+  "snyk": true
 }
