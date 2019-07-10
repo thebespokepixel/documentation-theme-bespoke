@@ -33,7 +33,7 @@
     "@thebespokepixel/badges": "^1.0.7",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
-    "documentation": "^11.0.1",
+    "documentation": "^12.0.0",
     "github-slugger": "^1.2.1",
     "highlight.js": "^9.15.8",
     "lodash": "^4.17.11",
