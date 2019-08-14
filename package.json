@@ -87,8 +87,8 @@
     "codeclimate": "4ed3614ff0158165f61b",
     "providers": {
       "status": {
-        "text": "beta",
-        "color": "blue"
+        "text": "production",
+        "color": "green"
       }
     },
     "readme": {
