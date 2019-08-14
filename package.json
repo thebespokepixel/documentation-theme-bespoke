@@ -1,7 +1,7 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "0.5.6",
-  "description": "A bespoke theme for documentation",
+  "version": "1.0.0",
+  "description": "A bespoke theme for documentation.js",
   "scripts": {
     "test": "xo && nyc ava",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/documentationjs/documentation-theme-default.git"
+    "url": "https://github.com/thebespokepixel/documentation-theme-bespoke.git"
   },
   "keywords": [
     "documentation",
@@ -26,30 +26,30 @@
   "author": "Mark Griffiths",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/documentationjs/documentation-theme-default/issues"
+    "url": "https://github.com/thebespokepixel/documentation-theme-bespoke/issues"
   },
-  "homepage": "https://github.com/documentationjs/documentation-theme-default",
+  "homepage": "https://github.com/thebespokepixel/documentation-theme-bespoke",
   "dependencies": {
-    "@thebespokepixel/badges": "^1.0.7",
+    "@thebespokepixel/badges": "^2.0.0",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
-    "documentation": "^11.0.1",
+    "documentation": "^12.1.1",
     "github-slugger": "^1.2.1",
-    "highlight.js": "^9.15.8",
-    "lodash": "^4.17.11",
-    "remark": "^10.0.1",
-    "remark-heading-gap": "^3.1.0",
-    "remark-squeeze-paragraphs": "^3.0.3",
+    "highlight.js": "^9.15.9",
+    "lodash": "^4.17.15",
+    "remark": "^11.0.1",
+    "remark-heading-gap": "^3.1.1",
+    "remark-squeeze-paragraphs": "^3.0.4",
     "vinyl": "^2.2.0",
     "vinyl-fs": "^3.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@thebespokepixel/oco-colorvalue-ex": "^4.0.0",
-    "@thebespokepixel/palette2oco": "^1.0.3",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@thebespokepixel/oco-colorvalue-ex": "^4.0.2",
+    "@thebespokepixel/palette2oco": "^1.0.5",
     "ace-css": "^1.1.0",
-    "ava": "^2.1.0",
+    "ava": "^2.2.0",
     "babel-plugin-lodash": "^3.3.4",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
@@ -58,11 +58,11 @@
     "gulp-stylus": "^2.7.0",
     "nib": "^1.1.2",
     "nyc": "^14.1.1",
-    "rollup": "^1.15.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.2",
     "split.js": "^1.5.11",
     "typopro-web": "^4.2.0",
@@ -81,32 +81,42 @@
     "node": ">=8.0"
   },
   "badges": {
-    "github": "MarkGriffiths",
+    "github": "thebespokepixel",
     "npm": "thebespokepixel",
     "name": "documentation-theme-bespoke",
-    "codeclimate": "43d4085fbdef2a26beec",
+    "codeclimate": "4ed3614ff0158165f61b",
     "providers": {
       "status": {
-        "text": "beta",
-        "color": "blue"
+        "text": "production",
+        "color": "green"
       }
     },
     "readme": {
-      "Status": [
+      "Publishing Status": [
         [
           "status",
           "npm",
-          "travis",
+          "travis-com",
           "david"
-        ],
-        [
-          "code-climate",
-          "snyk"
         ]
       ],
-      "Developer": [
-        "greenkeeper",
-        "david-dev"
+      "Development Status": [
+        [
+          "greenkeeper",
+          "travis-com-dev"
+        ],
+        [
+          "david-dev",
+          "david-devdeps-dev"
+        ],
+        [
+          "snyk",
+          "code-climate",
+          "code-climate-coverage"
+        ]
+      ],
+      "Help": [
+        "twitter"
       ]
     }
   }

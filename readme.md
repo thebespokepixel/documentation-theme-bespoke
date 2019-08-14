@@ -2,14 +2,19 @@
 
 > A tidy and smart documentation.js theme by The Bespoke Pixel
 
-##### Status
+##### Publishing Status
 
-![Status](https://img.shields.io/badge/status-beta-blue.svg?style=flat) [![npm](https://img.shields.io/npm/v/documentation-theme-bespoke.svg?style=flat&logo=npm)](https://www.npmjs.com/package/documentation-theme-bespoke "npm") [![Travis](https://img.shields.io/travis/MarkGriffiths/documentation-theme-bespoke.svg?branch=master&style=flat&logo=travis)](https://travis-ci.org/MarkGriffiths/documentation-theme-bespoke "Travis") [![David](https://img.shields.io/david/MarkGriffiths/documentation-theme-bespoke.svg?branch=master&style=flat)](https://david-dm.org/MarkGriffiths/documentation-theme-bespoke/master "David")  
- [![Code-climate](https://api.codeclimate.com/v1/badges/43d4085fbdef2a26beec/maintainability?style=flat)](https://codeclimate.com/github/MarkGriffiths/documentation-theme-bespoke/maintainability "Code-climate") [![Snyk](https://img.shields.io/snyk/vulnerabilities/github/MarkGriffiths/documentation-theme-bespoke.svg?style=flat&logo=npm)](https://snyk.io/test/github/MarkGriffiths/documentation-theme-bespoke "Snyk")   
+![Status](https://img.shields.io/badge/status-production-green) [![npm](https://img.shields.io/npm/v/documentation-theme-bespoke?logo=npm)](https://www.npmjs.com/package/documentation-theme-bespoke "npm") [![Travis](https://img.shields.io/travis/com/thebespokepixel/documentation-theme-bespoke/master?logo=travis)](https://travis-ci.com/thebespokepixel/documentation-theme-bespoke "Travis") [![David](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/master/status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/master "David")   
 
-##### Developer
+##### Development Status
 
-[![Greenkeeper](https://badges.greenkeeper.io/MarkGriffiths/documentation-theme-bespoke.svg)](https://greenkeeper.io/ "Greenkeeper") [![David-developer](https://img.shields.io/david/dev/MarkGriffiths/documentation-theme-bespoke.svg?branch=master&style=flat)](https://david-dm.org/MarkGriffiths/documentation-theme-bespoke/master#info=devDependencies "David-developer")   
+[![Greenkeeper](https://badges.greenkeeper.io/thebespokepixel/documentation-theme-bespoke.svg)](https://greenkeeper.io/ "Greenkeeper") [![Travis](https://img.shields.io/travis/com/thebespokepixel/documentation-theme-bespoke/develop?logo=travis)](https://travis-ci.com/thebespokepixel/documentation-theme-bespoke "Travis")  
+ [![David](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop/status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop "David") [![David-developer](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop/dev-status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop?type=dev "David-developer")  
+ [![Snyk](https://snyk.io/test/github/thebespokepixel/documentation-theme-bespoke/badge.svg)](https://snyk.io/test/github/thebespokepixel/documentation-theme-bespoke "Snyk") [![Code-climate](https://api.codeclimate.com/v1/badges/4ed3614ff0158165f61b/maintainability)](https://codeclimate.com/github/thebespokepixel/documentation-theme-bespoke/maintainability "Code-climate") [![Coverage](https://api.codeclimate.com/v1/badges/4ed3614ff0158165f61b/test_coverage)](https://codeclimate.com/github/thebespokepixel/documentation-theme-bespoke/test_coverage "Coverage")   
+
+##### Help
+
+[![Twitter](https://img.shields.io/twitter/follow/thebespokepixel?style=social)](https://twitter.com/thebespokepixel "Twitter")   
 
 ![bespoke-theme][screengrab]
 
@@ -22,4 +27,4 @@
 npm install --dev documentation-theme-bespoke
 ```
 
-[screengrab]: https://raw.githubusercontent.com/MarkGriffiths/documentation-theme-bespoke/master/media/bespoke-theme.png
+[screengrab]: https://raw.githubusercontent.com/thebespokepixel/documentation-theme-bespoke/master/media/bespoke-theme.png
