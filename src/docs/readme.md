@@ -10,4 +10,4 @@ ${badges}
 
 ${usage}
 
-[screengrab]: https://raw.githubusercontent.com/MarkGriffiths/documentation-theme-bespoke/master/media/bespoke-theme.png
+[screengrab]: https://raw.githubusercontent.com/thebespokepixel/documentation-theme-bespoke/master/media/bespoke-theme.png
