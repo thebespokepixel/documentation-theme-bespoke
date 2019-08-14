@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/documentationjs/documentation-theme-default",
   "dependencies": {
-    "@thebespokepixel/badges": "^1.0.7",
+    "@thebespokepixel/badges": "^2.0.0",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
     "documentation": "^11.0.1",
