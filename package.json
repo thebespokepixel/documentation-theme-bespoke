@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
     "test": "xo && nyc ava",
@@ -30,12 +30,12 @@
   },
   "homepage": "https://github.com/thebespokepixel/documentation-theme-bespoke",
   "dependencies": {
-    "@thebespokepixel/badges": "^2.0.0",
+    "@thebespokepixel/badges": "^2.0.1",
     "anchor-js": "^4.2.0",
     "concat-stream": "^2.0.0",
     "documentation": "^12.1.1",
     "github-slugger": "^1.2.1",
-    "highlight.js": "^9.15.9",
+    "highlight.js": "^9.15.10",
     "lodash": "^4.17.15",
     "remark": "^11.0.1",
     "remark-heading-gap": "^3.1.1",
@@ -46,10 +46,10 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "@thebespokepixel/oco-colorvalue-ex": "^4.0.2",
-    "@thebespokepixel/palette2oco": "^1.0.5",
+    "@thebespokepixel/oco-colorvalue-ex": "^4.0.3",
+    "@thebespokepixel/palette2oco": "^1.0.6",
     "ace-css": "^1.1.0",
-    "ava": "^2.2.0",
+    "ava": "^2.3.0",
     "babel-plugin-lodash": "^3.3.4",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
