@@ -7,10 +7,7 @@ branches:
 language: node_js
 node_js:
 - stable
-- 11
-- 10
-- 9
-- 8
+
 env:
   global:
   - CC_TEST_REPORTER_ID=4a329f2843b8c16a96aa710dc64e59f1750da93c31bc8131f857b8733e09cb6b
