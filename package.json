@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
     "test": "xo && nyc ava",
@@ -43,6 +43,9 @@
     "vinyl": "^2.2.0",
     "vinyl-fs": "^3.0.3"
   },
+  "optionalDependencies": {
+    "typopro-web": "^4.2.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -58,14 +61,13 @@
     "gulp-stylus": "^2.7.0",
     "nib": "^1.1.2",
     "nyc": "^14.1.1",
-    "rollup": "^1.21.1",
+    "rollup": "^1.21.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.3",
     "split.js": "^1.5.11",
-    "typopro-web": "^4.2.2",
     "xo": "^0.24.0"
   },
   "xo": {
