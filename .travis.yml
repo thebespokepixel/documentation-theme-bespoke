@@ -16,7 +16,7 @@ env:
 before_install:
   - "[[ $(node -v) =~ ^v12.*$ ]] || npm install -g npm@latest"
   - npm install -g greenkeeper-lockfile
-install: npm install -q
+install: npm install --production
 before_script:
   - greenkeeper-lockfile-update
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
