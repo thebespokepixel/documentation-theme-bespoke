@@ -61,7 +61,7 @@
     "gulp-stylus": "^2.7.0",
     "nib": "^1.1.2",
     "nyc": "^14.1.1",
-    "rollup": "^1.21.1",
+    "rollup": "^1.21.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
