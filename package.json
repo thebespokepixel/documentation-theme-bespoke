@@ -43,6 +43,9 @@
     "vinyl": "^2.2.0",
     "vinyl-fs": "^3.0.3"
   },
+  "optionalDependencies": {
+    "typopro-web": "^4.2.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -65,7 +68,6 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.3",
     "split.js": "^1.5.11",
-    "typopro-web": "^4.2.2",
     "xo": "^0.24.0"
   },
   "xo": {
