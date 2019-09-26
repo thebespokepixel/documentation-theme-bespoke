@@ -68,7 +68,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.3",
     "split.js": "^1.5.11",
-    "xo": "^0.24.0"
+    "xo": "^0.25.0"
   },
   "xo": {
     "semicolon": false,
