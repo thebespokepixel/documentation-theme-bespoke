@@ -52,7 +52,7 @@
     "@thebespokepixel/oco-colorvalue-ex": "^4.0.3",
     "@thebespokepixel/palette2oco": "^1.0.6",
     "ace-css": "^1.1.0",
-    "ava": "^2.3.0",
+    "ava": "^3.0.0",
     "babel-plugin-lodash": "^3.3.4",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
