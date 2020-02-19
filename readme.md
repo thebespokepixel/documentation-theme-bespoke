@@ -4,7 +4,7 @@
 
 ##### Publishing Status
 
-![Status](https://img.shields.io/badge/status-production-green) [![npm](https://img.shields.io/npm/v/documentation-theme-bespoke?logo=npm)](https://www.npmjs.com/package/documentation-theme-bespoke "npm") [![Travis](https://img.shields.io/travis/com/thebespokepixel/documentation-theme-bespoke/master?logo=travis)](https://travis-ci.com/thebespokepixel/documentation-theme-bespoke "Travis") [![David](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/master/status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/master "David")   
+![Status](https://img.shields.io/badge/status-production-green) [![npm](https://img.shields.io/npm/v/undefined?logo=npm)](https://www.npmjs.com/package/undefined "npm") [![Travis](https://img.shields.io/travis/com/thebespokepixel/documentation-theme-bespoke/master?logo=travis)](https://travis-ci.com/thebespokepixel/documentation-theme-bespoke "Travis") [![David](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/master/status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/master "David")   
 
 ##### Development Status
 
