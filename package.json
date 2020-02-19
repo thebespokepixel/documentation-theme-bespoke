@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
+    "external-assets": "npm install --no-save ace-css anchor-js split.js typopro-web",
     "test": "xo && nyc ava",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "doc-build": "echo 'Building docs...'",
@@ -31,7 +32,6 @@
   "homepage": "https://github.com/thebespokepixel/documentation-theme-bespoke",
   "dependencies": {
     "@thebespokepixel/badges": "^2.0.1",
-    "anchor-js": "^4.2.2",
     "concat-stream": "^2.0.0",
     "documentation": "^12.1.4",
     "github-slugger": "^1.2.1",
@@ -43,16 +43,17 @@
     "vinyl": "^2.2.0",
     "vinyl-fs": "^3.0.3"
   },
-  "optionalDependencies": {
+  "peerDependencies": {
+    "ace-css": "^1.1.0",
+    "anchor-js": "^4.2.2",
+    "split.js": "^1.5.11",
     "typopro-web": "^4.2.2"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "@thebespokepixel/oco-colorvalue-ex": "^4.0.3",
     "@thebespokepixel/palette2oco": "^1.0.6",
-    "ace-css": "^1.1.0",
     "ava": "^3.3.0",
     "babel-plugin-lodash": "^3.3.4",
     "gulp": "^4.0.2",
@@ -68,7 +69,6 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.4",
-    "split.js": "^1.5.11",
     "xo": "^0.26.1"
   },
   "ava": {
