@@ -11,10 +11,9 @@ const tocElements = document.querySelector('#toc').querySelectorAll('li')
 
 document.querySelector('#filter-input').addEventListener('keyup', e => {
 	// Enter key
-	if (e.keyCode === 13) {
+	if (e.key === 'Enter') {
 		// Go to the first displayed item in the toc
-		for (let i = 0; i < tocElements.length; i++) {
-			const element = tocElements[i]
+		for (const element of tocElements) {
 			if (!element.classList.contains('display-none')) {
 				location.replace(element.firstChild.href)
 				return e.preventDefault()
@@ -29,11 +28,10 @@ document.querySelector('#filter-input').addEventListener('keyup', e => {
 	if (!value.match(/^\s*$/)) {
 		match = element =>
 			element.firstChild.innerHTML &&
-			element.firstChild.innerHTML.toLowerCase().indexOf(value) !== -1
+			element.firstChild.innerHTML.toLowerCase().includes(value)
 	}
 
-	for (let i = 0; i < tocElements.length; i++) {
-		const element = tocElements[i]
+	for (const element of tocElements) {
 		const children = [...element.querySelectorAll('li')]
 		if (match(element) || children.some(match)) {
 			element.classList.remove('display-none')
@@ -45,8 +43,8 @@ document.querySelector('#filter-input').addEventListener('keyup', e => {
 
 const toggles = document.querySelectorAll('.toggle-sibling')
 
-for (let i = 0; i < toggles.length; i++) {
-	toggles[i].addEventListener('click', toggleSibling)
+for (const toggle of toggles) {
+	toggle.addEventListener('click', toggleSibling)
 }
 
 function toggleSibling() {
@@ -72,18 +70,19 @@ function showHashTarget(targetId) {
 }
 
 window.addEventListener('hashchange', () => {
-	showHashTarget(location.hash.substring(1))
+	showHashTarget(location.hash.slice(1))
 })
 
-showHashTarget(location.hash.substring(1))
+showHashTarget(location.hash.slice(1))
 
 const toclinks = document.querySelectorAll('.pre-open')
-for (let k = 0; k < toclinks.length; k++) {
-	toclinks[k].addEventListener('mousedown', preOpen, false)
+
+for (const toclink of toclinks) {
+	toclink.addEventListener('mousedown', preOpen, false)
 }
 
 function preOpen() {
-	showHashTarget(this.hash.substring(1))
+	showHashTarget(this.hash.slice(1))
 }
 
 const splitLeft = document.querySelector('#split-left')
