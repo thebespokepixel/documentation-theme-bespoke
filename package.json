@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
     "test": "xo && nyc ava",
@@ -31,13 +31,13 @@
   "homepage": "https://github.com/thebespokepixel/documentation-theme-bespoke",
   "dependencies": {
     "@thebespokepixel/badges": "^2.0.1",
-    "anchor-js": "^4.2.0",
+    "anchor-js": "^4.2.2",
     "concat-stream": "^2.0.0",
-    "documentation": "^12.1.1",
+    "documentation": "^12.1.4",
     "github-slugger": "^1.2.1",
-    "highlight.js": "^9.15.10",
+    "highlight.js": "^9.18.1",
     "lodash": "^4.17.15",
-    "remark": "^11.0.1",
+    "remark": "^11.0.2",
     "remark-heading-gap": "^3.1.1",
     "remark-squeeze-paragraphs": "^3.0.4",
     "vinyl": "^2.2.0",
@@ -47,28 +47,35 @@
     "typopro-web": "^4.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@ava/babel": "^1.0.1",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "@thebespokepixel/oco-colorvalue-ex": "^4.0.3",
     "@thebespokepixel/palette2oco": "^1.0.6",
     "ace-css": "^1.1.0",
-    "ava": "^2.3.0",
+    "ava": "^3.3.0",
     "babel-plugin-lodash": "^3.3.4",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
     "gulp-clean": "^0.4.0",
-    "gulp-rename": "^1.4.0",
+    "gulp-rename": "^2.0.0",
     "gulp-stylus": "^2.7.0",
     "nib": "^1.1.2",
-    "nyc": "^14.1.1",
-    "rollup": "^1.21.2",
+    "nyc": "^15.0.0",
+    "rollup": "^1.31.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.3",
+    "rollup-plugin-uglify": "^6.0.4",
     "split.js": "^1.5.11",
-    "xo": "^0.24.0"
+    "xo": "^0.26.1"
+  },
+  "ava": {
+    "babel": true,
+    "files": [
+      "test/*.js"
+    ]
   },
   "xo": {
     "semicolon": false,
@@ -80,7 +87,7 @@
     ]
   },
   "engines": {
-    "node": ">=8.0"
+    "node": ">=10.0"
   },
   "badges": {
     "github": "thebespokepixel",
