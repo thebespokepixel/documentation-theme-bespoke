@@ -33,7 +33,7 @@
   "dependencies": {
     "@thebespokepixel/badges": "^3.0.0",
     "concat-stream": "^2.0.0",
-    "documentation": "^12.1.4",
+    "documentation": "^13.0.0",
     "github-slugger": "^1.2.1",
     "highlight.js": "^9.18.1",
     "lodash": "^4.17.15",
