@@ -36,7 +36,7 @@
     "documentation": "^12.1.4",
     "github-slugger": "^1.2.1",
     "highlight.js": "^9.18.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.16",
     "remark": "^11.0.2",
     "remark-heading-gap": "^3.1.1",
     "remark-squeeze-paragraphs": "^3.0.4",
