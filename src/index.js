@@ -40,7 +40,7 @@ function formatSignature(section, formatters, isShort) {
 	return prefix + section.name + formatters.parameters(section, isShort) + returns
 }
 
-export default async function (comments, config) {
+export default async function theme(comments, config) {
 	const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
 			const slugger = new GithubSlugger()
@@ -55,8 +55,8 @@ export default async function (comments, config) {
 
 	const sharedImports = {
 		imports: {
-			kebabCase(str) {
-				return _.kebabCase(str)
+			kebabCase(content) {
+				return _.kebabCase(content)
 			},
 			badges() {
 				return formatters.markdown(badgesAST)
@@ -65,9 +65,9 @@ export default async function (comments, config) {
 				const usage = readFileSync(resolvePath(example))
 				return remark().use(gap).use(squeeze).parse(usage)
 			},
-			slug(str) {
+			slug(content) {
 				const slugger = new GithubSlugger()
-				return slugger.slug(str)
+				return slugger.slug(content)
 			},
 			shortSignature(section) {
 				return formatSignature(section, formatters, true)

@@ -43,7 +43,7 @@ function formatSignature(section, formatters, isShort) {
   return prefix + section.name + formatters.parameters(section, isShort) + returns;
 }
 
-async function index (comments, config) {
+async function theme(comments, config) {
   const linkerStack = new LinkerStack(config).namespaceResolver(comments, namespace => {
     const slugger = new GithubSlugger();
     return '#' + slugger.slug(namespace);
@@ -53,8 +53,8 @@ async function index (comments, config) {
   const badgesAST = await badges('docs', true);
   const sharedImports = {
     imports: {
-      kebabCase(str) {
-        return _kebabCase(str);
+      kebabCase(content) {
+        return _kebabCase(content);
       },
 
       badges() {
@@ -66,9 +66,9 @@ async function index (comments, config) {
         return remark().use(gap).use(squeeze).parse(usage);
       },
 
-      slug(str) {
+      slug(content) {
         const slugger = new GithubSlugger();
-        return slugger.slug(str);
+        return slugger.slug(content);
       },
 
       shortSignature(section) {
@@ -126,4 +126,4 @@ async function index (comments, config) {
   });
 }
 
-module.exports = index;
+module.exports = theme;
