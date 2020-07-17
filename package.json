@@ -111,10 +111,7 @@
       ],
       "Development Status": [
         [
-          "greenkeeper",
-          "travis-com-dev"
-        ],
-        [
+          "travis-com-dev",
           "david-dev",
           "david-devdeps-dev"
         ],
