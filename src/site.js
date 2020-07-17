@@ -9,14 +9,14 @@ anchors.add('h3').remove('.no-anchor')
 // Filter UI
 const tocElements = document.querySelector('#toc').querySelectorAll('li')
 
-document.querySelector('#filter-input').addEventListener('keyup', e => {
+document.querySelector('#filter-input').addEventListener('keyup', event_ => {
 	// Enter key
-	if (e.key === 'Enter') {
+	if (event_.key === 'Enter') {
 		// Go to the first displayed item in the toc
 		for (const element of tocElements) {
 			if (!element.classList.contains('display-none')) {
 				location.replace(element.firstChild.href)
-				return e.preventDefault()
+				return event_.preventDefault()
 			}
 		}
 	}
@@ -33,7 +33,7 @@ document.querySelector('#filter-input').addEventListener('keyup', e => {
 
 	for (const element of tocElements) {
 		const children = [...element.querySelectorAll('li')]
-		if (match(element) || children.some(match)) {
+		if (match(element) || children.some(child => match(child))) {
 			element.classList.remove('display-none')
 		} else {
 			element.classList.add('display-none')
