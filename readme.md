@@ -8,8 +8,7 @@
 
 ##### Development Status
 
-[![Greenkeeper](https://badges.greenkeeper.io/thebespokepixel/documentation-theme-bespoke.svg)](https://greenkeeper.io/ "Greenkeeper") [![Travis](https://img.shields.io/travis/com/thebespokepixel/documentation-theme-bespoke/develop?logo=travis)](https://travis-ci.com/thebespokepixel/documentation-theme-bespoke "Travis")  
- [![David](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop/status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop "David") [![David-developer](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop/dev-status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop?type=dev "David-developer")  
+[![Travis](https://img.shields.io/travis/com/thebespokepixel/documentation-theme-bespoke/develop?logo=travis)](https://travis-ci.com/thebespokepixel/documentation-theme-bespoke "Travis") [![David](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop/status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop "David") [![David-developer](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop/dev-status.svg)](https://david-dm.org/thebespokepixel/documentation-theme-bespoke/develop?type=dev "David-developer")  
  [![Snyk](https://snyk.io/test/github/thebespokepixel/documentation-theme-bespoke/badge.svg)](https://snyk.io/test/github/thebespokepixel/documentation-theme-bespoke "Snyk") [![Code-climate](https://api.codeclimate.com/v1/badges/4ed3614ff0158165f61b/maintainability)](https://codeclimate.com/github/thebespokepixel/documentation-theme-bespoke/maintainability "Code-climate") [![Coverage](https://api.codeclimate.com/v1/badges/4ed3614ff0158165f61b/test_coverage)](https://codeclimate.com/github/thebespokepixel/documentation-theme-bespoke/test_coverage "Coverage")   
 
 ##### Help
