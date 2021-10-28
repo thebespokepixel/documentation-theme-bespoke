@@ -10,9 +10,6 @@ var concat = require('concat-stream');
 var GithubSlugger = require('github-slugger');
 var documentation = require('documentation');
 var hljs = require('highlight.js');
-var remark = require('remark');
-var gap = require('remark-heading-gap');
-var squeeze = require('remark-squeeze-paragraphs');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -40,9 +37,6 @@ var ___default = /*#__PURE__*/_interopDefaultLegacy(_);
 var concat__default = /*#__PURE__*/_interopDefaultLegacy(concat);
 var GithubSlugger__default = /*#__PURE__*/_interopDefaultLegacy(GithubSlugger);
 var hljs__default = /*#__PURE__*/_interopDefaultLegacy(hljs);
-var remark__default = /*#__PURE__*/_interopDefaultLegacy(remark);
-var gap__default = /*#__PURE__*/_interopDefaultLegacy(gap);
-var squeeze__default = /*#__PURE__*/_interopDefaultLegacy(squeeze);
 
 const {createFormatters, LinkerStack} = documentation.util;
 
@@ -74,6 +68,9 @@ function formatSignature(section, formatters, isShort) {
 
 async function theme(comments, config) {
 	const badges = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@thebespokepixel/badges')); });
+	const {remark} = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark')); });
+	const gap = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark-heading-gap')); });
+	const squeeze = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark-squeeze-paragraphs')); });
 
 	const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
@@ -97,7 +94,7 @@ async function theme(comments, config) {
 			},
 			usage(example) {
 				const usage = node_fs.readFileSync(node_path.resolve(example));
-				return remark__default["default"]().use(gap__default["default"]).use(squeeze__default["default"]).parse(usage)
+				return remark().use(gap).use(squeeze).parse(usage)
 			},
 			slug(content) {
 				const slugger = new GithubSlugger__default["default"]();
