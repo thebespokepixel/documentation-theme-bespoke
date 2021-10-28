@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
     "build": "gulp",
@@ -11,7 +11,6 @@
     "coverage": "c8 --reporter=lcov ava; open test/coverage/lcov-report/index.html"
   },
   "main": "index.js",
-  "type": "module",
   "files": [
     "assets",
     "parts",
@@ -73,7 +72,7 @@
     "semicolon": false,
     "ignores": [
       "index.js",
-      "gulpfile.js",
+      "gulpfile.mjs",
       "assets/**/*.js"
     ]
   },

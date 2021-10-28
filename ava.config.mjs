@@ -1,5 +1,5 @@
 const config = {
-	files: ['test/*.js'],
+	files: ['test/*.mjs'],
 }
 
 export default config

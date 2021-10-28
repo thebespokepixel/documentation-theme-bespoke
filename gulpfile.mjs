@@ -19,7 +19,7 @@ gulp.task('build', () =>
 		external,
 		plugins: [resolve(), json({preferConst: true}), commonjs()],
 		output: {
-			format: 'es'
+			format: 'cjs'
 		}
 	})
 	.pipe(source('index.js'))
