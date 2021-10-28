@@ -8,9 +8,6 @@ import concat from 'concat-stream'
 import GithubSlugger from 'github-slugger'
 import {util} from 'documentation'
 import hljs from 'highlight.js'
-import remark from 'remark'
-import gap from 'remark-heading-gap'
-import squeeze from 'remark-squeeze-paragraphs'
 
 const {createFormatters, LinkerStack} = util
 
@@ -42,6 +39,9 @@ function formatSignature(section, formatters, isShort) {
 
 export default async function theme(comments, config) {
 	const badges = await import('@thebespokepixel/badges')
+	const {remark} = await import('remark')
+	const gap = await import('remark-heading-gap')
+	const squeeze = await import('remark-squeeze-paragraphs')
 
 	const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
