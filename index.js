@@ -10,12 +10,29 @@ var concat = require('concat-stream');
 var GithubSlugger = require('github-slugger');
 var documentation = require('documentation');
 var hljs = require('highlight.js');
-var badges = require('@thebespokepixel/badges');
 var remark = require('remark');
 var gap = require('remark-heading-gap');
 var squeeze = require('remark-squeeze-paragraphs');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+function _interopNamespace(e) {
+	if (e && e.__esModule) return e;
+	var n = Object.create(null);
+	if (e) {
+		Object.keys(e).forEach(function (k) {
+			if (k !== 'default') {
+				var d = Object.getOwnPropertyDescriptor(e, k);
+				Object.defineProperty(n, k, d.get ? d : {
+					enumerable: true,
+					get: function () { return e[k]; }
+				});
+			}
+		});
+	}
+	n["default"] = e;
+	return Object.freeze(n);
+}
 
 var File__default = /*#__PURE__*/_interopDefaultLegacy(File);
 var vfs__default = /*#__PURE__*/_interopDefaultLegacy(vfs);
@@ -23,7 +40,6 @@ var ___default = /*#__PURE__*/_interopDefaultLegacy(_);
 var concat__default = /*#__PURE__*/_interopDefaultLegacy(concat);
 var GithubSlugger__default = /*#__PURE__*/_interopDefaultLegacy(GithubSlugger);
 var hljs__default = /*#__PURE__*/_interopDefaultLegacy(hljs);
-var badges__default = /*#__PURE__*/_interopDefaultLegacy(badges);
 var remark__default = /*#__PURE__*/_interopDefaultLegacy(remark);
 var gap__default = /*#__PURE__*/_interopDefaultLegacy(gap);
 var squeeze__default = /*#__PURE__*/_interopDefaultLegacy(squeeze);
@@ -57,6 +73,8 @@ function formatSignature(section, formatters, isShort) {
 }
 
 async function theme(comments, config) {
+	const badges = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@thebespokepixel/badges')); });
+
 	const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
 			const slugger = new GithubSlugger__default["default"]();
@@ -67,7 +85,7 @@ async function theme(comments, config) {
 
 	hljs__default["default"].configure(config.hljs || {});
 
-	const badgesAST = await badges__default["default"]('docs', true);
+	const badgesAST = await badges('docs', true);
 
 	const sharedImports = {
 		imports: {
