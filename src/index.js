@@ -1,5 +1,6 @@
-import {readFileSync} from 'fs'
-import {join, resolve as resolvePath} from 'path'
+import {readFileSync} from 'node:fs'
+import {join, resolve as resolvePath, dirname} from 'node:path'
+import {fileURLToPath} from 'node:url'
 import File from 'vinyl'
 import vfs from 'vinyl-fs'
 import _ from 'lodash'
@@ -97,7 +98,7 @@ export default async function theme(comments, config) {
 		}
 	}
 
-	const renderTemplate = source => _.template(readFileSync(join(__dirname, source), 'utf8'), sharedImports)
+	const renderTemplate = source => _.template(readFileSync(join(dirname(fileURLToPath(import.meta.url)), source), 'utf8'), sharedImports)
 
 	sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._')
 	sharedImports.imports.renderSection = renderTemplate('parts/section._')
@@ -108,7 +109,12 @@ export default async function theme(comments, config) {
 
 	// Push assets into the pipeline as well.
 	return new Promise(resolve => {
-		vfs.src([join(__dirname, 'assets', '**')], {base: __dirname}).pipe(
+		vfs.src(
+			[
+				join(dirname(fileURLToPath(import.meta.url)), 'assets', '**')
+			],
+			{base: dirname(fileURLToPath(import.meta.url))}
+		).pipe(
 			concat(files => {
 				resolve(
 					files.concat(
