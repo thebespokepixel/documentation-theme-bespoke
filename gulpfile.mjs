@@ -11,14 +11,19 @@ import palette2oco from '@thebespokepixel/palette2oco'
 import stylus from 'gulp-stylus'
 import nib from 'nib'
 
-const external = id => !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
-
+const external = id => {
+	if (['@thebespokepixel/badges', 'remark', 'remark-heading-gap', 'remark-squeeze-paragraphs'].includes(id)) {
+		return false
+	}
+	return !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
+}
 gulp.task('build', () =>
 	rollup({
 		input: 'src/index.js',
 		external,
 		plugins: [resolve(), json({preferConst: true}), commonjs()],
 		output: {
+			inlineDynamicImports: true,
 			format: 'cjs'
 		}
 	})
