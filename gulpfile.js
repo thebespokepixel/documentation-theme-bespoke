@@ -1,64 +1,42 @@
-const gulp = require('gulp')
-const rename = require('gulp-rename')
-const clean = require('gulp-clean')
-const rollup = require('gulp-better-rollup')
-const babel = require('rollup-plugin-babel')
-const {uglify} = require('rollup-plugin-uglify')
-const lodash = require('babel-plugin-lodash')
-const resolve = require('rollup-plugin-node-resolve')
-const commonjs = require('rollup-plugin-commonjs')
-const json = require('rollup-plugin-json')
-const palette2oco = require('@thebespokepixel/palette2oco')
-const stylus = require('gulp-stylus')
-const nib = require('nib')
+import gulp from 'gulp'
+import rename from 'gulp-rename'
+import clean from 'gulp-clean'
+import terser from 'gulp-terser'
+import source from 'vinyl-source-stream'
+import rollup from '@rollup/stream'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
+import palette2oco from '@thebespokepixel/palette2oco'
+import stylus from 'gulp-stylus'
+import nib from 'nib'
 
 const external = id => !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
 
-const babelConfig = {
-	plugins: [lodash],
-	presets: [
-		['@babel/preset-env', {
-			modules: false,
-			targets: {
-				node: "8"
-			}
-		}]
-	],
-	comments: false,
-	exclude: 'node_modules/**'
-}
-
-const babelWebConfig = {
-	plugins: [lodash],
-	presets: [
-		['@babel/preset-env', {
-			modules: false
-		}]
-	],
-	comments: false,
-	exclude: 'node_modules/**'
-}
-
 gulp.task('build', () =>
-	gulp.src('src/index.js')
-		.pipe(rollup({
-			external,
-			plugins: [resolve(), json({preferConst: true}), commonjs(), babel(babelConfig)]
-		}, {
-			format: 'cjs'
-		}))
-		.pipe(rename('index.js'))
-		.pipe(gulp.dest('.'))
+	rollup({
+		input: 'src/index.js',
+		external,
+		plugins: [resolve(), json({preferConst: true}), commonjs()],
+		output: {
+			format: 'es'
+		}
+	})
+	.pipe(source('index.js'))
+	.pipe(gulp.dest('.'))
 )
 
 gulp.task('site', () =>
-	gulp.src('src/site.js')
-		.pipe(rollup({
-			plugins: [resolve(), json({preferConst: true}), commonjs(), babel(babelWebConfig), uglify()]
-		}, {
+	rollup({
+		input: 'src/site.js',
+		external,
+		plugins: [resolve(), json({preferConst: true}), commonjs()],
+		output: {
 			format: 'iife'
-		}))
-		.pipe(gulp.dest('./assets/js/'))
+		}
+	})
+	.pipe(source('site.js'))
+	.pipe(gulp.dest('./assets/js/'))
 )
 
 // clean
