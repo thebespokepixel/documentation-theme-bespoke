@@ -1,129 +1,129 @@
-'use strict';
+import { readFileSync } from 'fs';
+import { resolve, join } from 'path';
+import File from 'vinyl';
+import vfs from 'vinyl-fs';
+import _ from 'lodash';
+import concat from 'concat-stream';
+import GithubSlugger from 'github-slugger';
+import { util } from 'documentation';
+import hljs from 'highlight.js';
+import badges from '@thebespokepixel/badges';
+import remark from 'remark';
+import gap from 'remark-heading-gap';
+import squeeze from 'remark-squeeze-paragraphs';
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var _template = _interopDefault(require('lodash/template'));
-var _kebabCase = _interopDefault(require('lodash/kebabCase'));
-var fs = require('fs');
-var path = require('path');
-var File = _interopDefault(require('vinyl'));
-var vfs = _interopDefault(require('vinyl-fs'));
-var concat = _interopDefault(require('concat-stream'));
-var GithubSlugger = _interopDefault(require('github-slugger'));
-var documentation = require('documentation');
-var hljs = _interopDefault(require('highlight.js'));
-var badges = _interopDefault(require('@thebespokepixel/badges'));
-var remark = _interopDefault(require('remark'));
-var gap = _interopDefault(require('remark-heading-gap'));
-var squeeze = _interopDefault(require('remark-squeeze-paragraphs'));
-
-const {
-  createFormatters,
-  LinkerStack
-} = documentation.util;
+const {createFormatters, LinkerStack} = util;
 
 function isFunction(section) {
-  return section.kind === 'function' || section.kind === 'typedef' && section.type.type === 'NameExpression' && section.type.name === 'Function';
+	return (
+		section.kind === 'function' ||
+		(section.kind === 'typedef' &&
+		section.type.type === 'NameExpression' &&
+		section.type.name === 'Function')
+	)
 }
 
 function formatSignature(section, formatters, isShort) {
-  let returns = '';
-  let prefix = '';
+	let returns = '';
+	let prefix = '';
+	if (section.kind === 'class') {
+		prefix = 'new ';
+	} else if (!isFunction(section)) {
+		return section.name
+	}
 
-  if (section.kind === 'class') {
-    prefix = 'new ';
-  } else if (!isFunction(section)) {
-    return section.name;
-  }
+	if (!isShort && section.returns && section.returns.length > 0) {
+		returns = ' → ' +
+			formatters.type(section.returns[0].type);
+	}
 
-  if (!isShort && section.returns && section.returns.length > 0) {
-    returns = ' → ' + formatters.type(section.returns[0].type);
-  }
-
-  return prefix + section.name + formatters.parameters(section, isShort) + returns;
+	return prefix + section.name + formatters.parameters(section, isShort) + returns
 }
 
 async function theme(comments, config) {
-  const linkerStack = new LinkerStack(config).namespaceResolver(comments, namespace => {
-    const slugger = new GithubSlugger();
-    return '#' + slugger.slug(namespace);
-  });
-  const formatters = createFormatters(linkerStack.link);
-  hljs.configure(config.hljs || {});
-  const badgesAST = await badges('docs', true);
-  const sharedImports = {
-    imports: {
-      kebabCase(content) {
-        return _kebabCase(content);
-      },
+	const linkerStack = new LinkerStack(config)
+		.namespaceResolver(comments, namespace => {
+			const slugger = new GithubSlugger();
+			return '#' + slugger.slug(namespace)
+		});
 
-      badges() {
-        return formatters.markdown(badgesAST);
-      },
+	const formatters = createFormatters(linkerStack.link);
 
-      usage(example) {
-        const usage = fs.readFileSync(path.resolve(example));
-        return remark().use(gap).use(squeeze).parse(usage);
-      },
+	hljs.configure(config.hljs || {});
 
-      slug(content) {
-        const slugger = new GithubSlugger();
-        return slugger.slug(content);
-      },
+	const badgesAST = await badges('docs', true);
 
-      shortSignature(section) {
-        return formatSignature(section, formatters, true);
-      },
+	const sharedImports = {
+		imports: {
+			kebabCase(content) {
+				return _.kebabCase(content)
+			},
+			badges() {
+				return formatters.markdown(badgesAST)
+			},
+			usage(example) {
+				const usage = readFileSync(resolve(example));
+				return remark().use(gap).use(squeeze).parse(usage)
+			},
+			slug(content) {
+				const slugger = new GithubSlugger();
+				return slugger.slug(content)
+			},
+			shortSignature(section) {
+				return formatSignature(section, formatters, true)
+			},
+			signature(section) {
+				return formatSignature(section, formatters)
+			},
+			md(ast, inline) {
+				if (inline && ast && ast.children.length > 0 && ast.children[0].type === 'paragraph') {
+					ast = {
+						type: 'root',
+						children: ast.children[0].children.concat(ast.children.slice(1))
+					};
+				}
 
-      signature(section) {
-        return formatSignature(section, formatters);
-      },
+				return formatters.markdown(ast)
+			},
+			formatType: formatters.type,
+			autolink: formatters.autolink,
+			highlight(example) {
+				if (config.hljs && config.hljs.highlightAuto) {
+					return hljs.highlightAuto(example).value
+				}
 
-      md(ast, inline) {
-        if (inline && ast && ast.children.length > 0 && ast.children[0].type === 'paragraph') {
-          ast = {
-            type: 'root',
-            children: ast.children[0].children.concat(ast.children.slice(1))
-          };
-        }
+				return hljs.highlight('js', example).value
+			}
+		}
+	};
 
-        return formatters.markdown(ast);
-      },
+	const renderTemplate = source => _.template(readFileSync(join(__dirname, source), 'utf8'), sharedImports);
 
-      formatType: formatters.type,
-      autolink: formatters.autolink,
+	sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._');
+	sharedImports.imports.renderSection = renderTemplate('parts/section._');
+	sharedImports.imports.renderNote = renderTemplate('parts/note._');
+	sharedImports.imports.renderParamProperty = renderTemplate('parts/paramProperty._');
 
-      highlight(example) {
-        if (config.hljs && config.hljs.highlightAuto) {
-          return hljs.highlightAuto(example).value;
-        }
+	const pageTemplate = renderTemplate('parts/index._');
 
-        return hljs.highlight('js', example).value;
-      }
-
-    }
-  };
-
-  const renderTemplate = source => _template(fs.readFileSync(path.join(__dirname, source), 'utf8'), sharedImports);
-
-  sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._');
-  sharedImports.imports.renderSection = renderTemplate('parts/section._');
-  sharedImports.imports.renderNote = renderTemplate('parts/note._');
-  sharedImports.imports.renderParamProperty = renderTemplate('parts/paramProperty._');
-  const pageTemplate = renderTemplate('parts/index._');
-  return new Promise(resolve => {
-    vfs.src([path.join(__dirname, 'assets', '**')], {
-      base: __dirname
-    }).pipe(concat(files => {
-      resolve(files.concat(new File({
-        path: 'index.html',
-        contents: Buffer.from(pageTemplate({
-          docs: comments,
-          config
-        }))
-      })));
-    }));
-  });
+	// Push assets into the pipeline as well.
+	return new Promise(resolve => {
+		vfs.src([join(__dirname, 'assets', '**')], {base: __dirname}).pipe(
+			concat(files => {
+				resolve(
+					files.concat(
+						new File({
+							path: 'index.html',
+							contents: Buffer.from(pageTemplate({
+								docs: comments,
+								config
+							}))
+						})
+					)
+				);
+			})
+		);
+	})
 }
 
-module.exports = theme;
+export { theme as default };

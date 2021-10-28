@@ -25,10 +25,10 @@ document.querySelector('#filter-input').addEventListener('keyup', event_ => {
 
 	const value = document.querySelector('#filter-input').value.toLowerCase()
 
-	if (!value.match(/^\s*$/)) {
+	if (!/^\s*$/.test(value)) {
 		match = element =>
-			element.firstChild.innerHTML &&
-			element.firstChild.innerHTML.toLowerCase().includes(value)
+			element.firstChild.innerHTML
+			&& element.firstChild.innerHTML.toLowerCase().includes(value)
 	}
 
 	for (const element of tocElements) {
@@ -63,8 +63,8 @@ function toggleSibling() {
 function showHashTarget(targetId) {
 	const hashTarget = document.getElementById(targetId)
 	// New target is hidden
-	if (hashTarget && hashTarget.offsetHeight === 0 &&
-		hashTarget.parentNode.parentNode.classList.contains('display-none')) {
+	if (hashTarget && hashTarget.offsetHeight === 0
+		&& hashTarget.parentNode.parentNode.classList.contains('display-none')) {
 		hashTarget.parentNode.parentNode.classList.remove('display-none')
 	}
 }
@@ -96,16 +96,16 @@ splitLeft.style.overflow = ''
 Split(['#split-left', '#split-right'], {
 	elementStyle(dimension, size, gutterSize) {
 		return {
-			'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'
+			'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)',
 		}
 	},
 	gutterStyle(dimension, gutterSize) {
 		return {
-			'flex-basis': gutterSize + 'px'
+			'flex-basis': gutterSize + 'px',
 		}
 	},
 	gutterSize: 20,
-	sizes: [20, 80]
+	sizes: [20, 80],
 })
 
 // Chrome doesn't remember scroll position properly so do it ourselves.
@@ -115,9 +115,9 @@ function updateState() {
 	history.replaceState(
 		{
 			leftTop: splitLeft.scrollTop,
-			rightTop: splitRight.scrollTop
+			rightTop: splitRight.scrollTop,
 		},
-		document.title
+		document.title,
 	)
 }
 
