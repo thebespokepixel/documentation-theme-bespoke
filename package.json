@@ -71,7 +71,6 @@
   },
   "xo": {
     "semicolon": false,
-    "esnext": true,
     "ignores": [
       "index.js",
       "gulpfile.js",
