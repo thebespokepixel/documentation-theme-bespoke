@@ -42,6 +42,9 @@ export default async function theme(comments, config) {
 		const {remark} = await import('remark')
 		const gap = await import('remark-heading-gap').then(module => module.default)
 		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default)
+		const gfm = await import('remark-gfm').then(module => module.default)
+		const html = await import('remark-html').then(module => module.default)
+		const visit = await import('unist-util-visit').then(module => module.default)
 
 		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
@@ -55,17 +58,52 @@ export default async function theme(comments, config) {
 
 	const badgesAST = await badges('docs', true)
 
+	const highlighter = ast => {
+		visit(ast, 'code', node => {
+			if (node.lang) {
+				node.type = 'html'
+				node.value =
+					"<pre class='hljs'>" +
+					hljs.highlightAuto(node.value, [node.lang]).value +
+					'</pre>'
+			}
+		})
+		return ast
+	}
+
+	const rerouteLinks = (getHref, ast) => {
+		visit(ast, 'link', node => {
+			if (
+				node.jsdoc &&
+				!node.url.match(/^(http|https|\.)/) &&
+				getHref(node.url)
+			) {
+				node.url = getHref(node.url)
+			}
+		})
+		return ast
+};
+
+	const processMarkdown = ast => {
+		if (ast) {
+			return remark()
+				.use(html, {sanitize: false})
+				.stringify(highlighter(rerouteLinks(ast)))
+		}
+		return ''
+	}
+
 	const sharedImports = {
 		imports: {
 			kebabCase(content) {
 				return _.kebabCase(content)
 			},
 			badges() {
-				return formatters.markdown(badgesAST)
+				return processMarkdown(badgesAST)
 			},
 			usage(example) {
 				const usage = readFileSync(resolvePath(example))
-				return remark().use(gap).use(squeeze).parse(usage)
+				return remark().use(gap).use(squeeze).use(gfm).parse(usage)
 			},
 			slug(content) {
 				const slugger = new GithubSlugger()
@@ -85,7 +123,7 @@ export default async function theme(comments, config) {
 					}
 				}
 
-				return formatters.markdown(ast)
+				return processMarkdown(ast)
 			},
 			formatType: formatters.type,
 			autolink: formatters.autolink,
