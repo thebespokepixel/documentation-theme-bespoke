@@ -13,6 +13,24 @@ var hljs = require('highlight.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
+function _interopNamespace(e) {
+	if (e && e.__esModule) return e;
+	var n = Object.create(null);
+	if (e) {
+		Object.keys(e).forEach(function (k) {
+			if (k !== 'default') {
+				var d = Object.getOwnPropertyDescriptor(e, k);
+				Object.defineProperty(n, k, d.get ? d : {
+					enumerable: true,
+					get: function () { return e[k]; }
+				});
+			}
+		});
+	}
+	n["default"] = e;
+	return Object.freeze(n);
+}
+
 var File__default = /*#__PURE__*/_interopDefaultLegacy(File);
 var vfs__default = /*#__PURE__*/_interopDefaultLegacy(vfs);
 var ___default = /*#__PURE__*/_interopDefaultLegacy(_);
@@ -53,6 +71,9 @@ async function theme(comments, config) {
 		const {remark} = await import('remark');
 		const gap = await import('remark-heading-gap').then(module => module.default);
 		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default);
+		const gfm = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark-gfm')); }).then(module => module.default);
+		const html = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark-html')); }).then(module => module.default);
+		const visit = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('unist-util-visit')); }).then(module => module.default);
 
 		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
@@ -66,17 +87,52 @@ async function theme(comments, config) {
 
 	const badgesAST = await badges('docs', true);
 
+	const highlighter = ast => {
+		visit(ast, 'code', node => {
+			if (node.lang) {
+				node.type = 'html';
+				node.value =
+					"<pre class='hljs'>" +
+					hljs__default["default"].highlightAuto(node.value, [node.lang]).value +
+					'</pre>';
+			}
+		});
+		return ast
+	};
+
+	const rerouteLinks = (getHref, ast) => {
+		visit(ast, 'link', node => {
+			if (
+				node.jsdoc &&
+				!node.url.match(/^(http|https|\.)/) &&
+				getHref(node.url)
+			) {
+				node.url = getHref(node.url);
+			}
+		});
+		return ast
+};
+
+	const processMarkdown = ast => {
+		if (ast) {
+			return remark()
+				.use(html, {sanitize: false})
+				.stringify(highlighter(rerouteLinks(ast)))
+		}
+		return ''
+	};
+
 	const sharedImports = {
 		imports: {
 			kebabCase(content) {
 				return ___default["default"].kebabCase(content)
 			},
 			badges() {
-				return formatters.markdown(badgesAST)
+				return processMarkdown(badgesAST)
 			},
 			usage(example) {
 				const usage = node_fs.readFileSync(node_path.resolve(example));
-				return remark().use(gap).use(squeeze).parse(usage)
+				return remark().use(gap).use(squeeze).use(gfm).parse(usage)
 			},
 			slug(content) {
 				const slugger = new GithubSlugger__default["default"]();
@@ -96,7 +152,7 @@ async function theme(comments, config) {
 					};
 				}
 
-				return formatters.markdown(ast)
+				return processMarkdown(ast)
 			},
 			formatType: formatters.type,
 			autolink: formatters.autolink,
