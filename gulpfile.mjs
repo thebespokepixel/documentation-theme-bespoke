@@ -17,8 +17,8 @@ function retainImportExpressionPlugin({modules}) {
 	return {
 		name: 'retain-import-expression',
 		resolveDynamicImport(specifier) {
-			if (modules.includes(specifier)) return false;
-			return null;
+			if (modules.includes(specifier)) return false
+			return null
 		},
 		renderDynamicImport({ targetModuleId }) {
 			if (modules.includes(targetModuleId)) {
@@ -28,7 +28,7 @@ function retainImportExpressionPlugin({modules}) {
 				};
 			}
 		}
-	};
+	}
 }
 
 gulp.task('build', () =>
