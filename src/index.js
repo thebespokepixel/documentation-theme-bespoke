@@ -44,7 +44,7 @@ export default async function theme(comments, config) {
 		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default)
 		const gfm = await import('remark-gfm').then(module => module.default)
 		const html = await import('remark-html').then(module => module.default)
-		const visit = await import('unist-util-visit').then(module => module.default)
+		const {visit} = await import('unist-util-visit')
 
 		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
@@ -71,7 +71,7 @@ export default async function theme(comments, config) {
 		return ast
 	}
 
-	const rerouteLinks = (getHref, ast) => {
+	const _rerouteLinks = (getHref, ast) => {
 		visit(ast, 'link', node => {
 			if (
 				node.jsdoc &&
@@ -82,7 +82,9 @@ export default async function theme(comments, config) {
 			}
 		})
 		return ast
-};
+	}
+
+	const rerouteLinks = _rerouteLinks.bind(undefined, linkerStack.link)
 
 	const processMarkdown = ast => {
 		if (ast) {
