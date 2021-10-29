@@ -1,5 +1,6 @@
-import {readFileSync} from 'fs'
-import {join, resolve as resolvePath} from 'path'
+import {readFileSync} from 'node:fs'
+import {join, resolve as resolvePath, dirname} from 'node:path'
+import {fileURLToPath} from 'node:url'
 import File from 'vinyl'
 import vfs from 'vinyl-fs'
 import _ from 'lodash'
@@ -7,10 +8,6 @@ import concat from 'concat-stream'
 import GithubSlugger from 'github-slugger'
 import {util} from 'documentation'
 import hljs from 'highlight.js'
-import badges from '@thebespokepixel/badges'
-import remark from 'remark'
-import gap from 'remark-heading-gap'
-import squeeze from 'remark-squeeze-paragraphs'
 
 const {createFormatters, LinkerStack} = util
 
@@ -41,7 +38,15 @@ function formatSignature(section, formatters, isShort) {
 }
 
 export default async function theme(comments, config) {
-	const linkerStack = new LinkerStack(config)
+		const badges = await import('@thebespokepixel/badges').then(module => module.default)
+		const {remark} = await import('remark')
+		const gap = await import('remark-heading-gap').then(module => module.default)
+		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default)
+		const gfm = await import('remark-gfm').then(module => module.default)
+		const html = await import('remark-html').then(module => module.default)
+		const {visit} = await import('unist-util-visit')
+
+		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
 			const slugger = new GithubSlugger()
 			return '#' + slugger.slug(namespace)
@@ -53,17 +58,54 @@ export default async function theme(comments, config) {
 
 	const badgesAST = await badges('docs', true)
 
+	const highlighter = ast => {
+		visit(ast, 'code', node => {
+			if (node.lang) {
+				node.type = 'html'
+				node.value =
+					"<pre class='hljs'>" +
+					hljs.highlightAuto(node.value, [node.lang]).value +
+					'</pre>'
+			}
+		})
+		return ast
+	}
+
+	const _rerouteLinks = (getHref, ast) => {
+		visit(ast, 'link', node => {
+			if (
+				node.jsdoc &&
+				!node.url.match(/^(http|https|\.)/) &&
+				getHref(node.url)
+			) {
+				node.url = getHref(node.url)
+			}
+		})
+		return ast
+	}
+
+	const rerouteLinks = _rerouteLinks.bind(undefined, linkerStack.link)
+
+	const processMarkdown = ast => {
+		if (ast) {
+			return remark()
+				.use(html, {sanitize: false})
+				.stringify(highlighter(rerouteLinks(ast)))
+		}
+		return ''
+	}
+
 	const sharedImports = {
 		imports: {
 			kebabCase(content) {
 				return _.kebabCase(content)
 			},
 			badges() {
-				return formatters.markdown(badgesAST)
+				return processMarkdown(badgesAST)
 			},
 			usage(example) {
 				const usage = readFileSync(resolvePath(example))
-				return remark().use(gap).use(squeeze).parse(usage)
+				return remark().use(gap).use(squeeze).use(gfm).parse(usage)
 			},
 			slug(content) {
 				const slugger = new GithubSlugger()
@@ -83,7 +125,7 @@ export default async function theme(comments, config) {
 					}
 				}
 
-				return formatters.markdown(ast)
+				return processMarkdown(ast)
 			},
 			formatType: formatters.type,
 			autolink: formatters.autolink,
@@ -97,7 +139,7 @@ export default async function theme(comments, config) {
 		}
 	}
 
-	const renderTemplate = source => _.template(readFileSync(join(__dirname, source), 'utf8'), sharedImports)
+	const renderTemplate = source => _.template(readFileSync(join(dirname(fileURLToPath(import.meta.url)), source), 'utf8'), sharedImports)
 
 	sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._')
 	sharedImports.imports.renderSection = renderTemplate('parts/section._')
@@ -108,7 +150,12 @@ export default async function theme(comments, config) {
 
 	// Push assets into the pipeline as well.
 	return new Promise(resolve => {
-		vfs.src([join(__dirname, 'assets', '**')], {base: __dirname}).pipe(
+		vfs.src(
+			[
+				join(dirname(fileURLToPath(import.meta.url)), 'assets', '**')
+			],
+			{base: dirname(fileURLToPath(import.meta.url))}
+		).pipe(
 			concat(files => {
 				resolve(
 					files.concat(

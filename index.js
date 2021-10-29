@@ -1,18 +1,26 @@
-import { readFileSync } from 'fs';
-import { resolve, join } from 'path';
-import File from 'vinyl';
-import vfs from 'vinyl-fs';
-import _ from 'lodash';
-import concat from 'concat-stream';
-import GithubSlugger from 'github-slugger';
-import { util } from 'documentation';
-import hljs from 'highlight.js';
-import badges from '@thebespokepixel/badges';
-import remark from 'remark';
-import gap from 'remark-heading-gap';
-import squeeze from 'remark-squeeze-paragraphs';
+'use strict';
 
-const {createFormatters, LinkerStack} = util;
+var node_fs = require('node:fs');
+var node_path = require('node:path');
+var node_url = require('node:url');
+var File = require('vinyl');
+var vfs = require('vinyl-fs');
+var _ = require('lodash');
+var concat = require('concat-stream');
+var GithubSlugger = require('github-slugger');
+var documentation = require('documentation');
+var hljs = require('highlight.js');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var File__default = /*#__PURE__*/_interopDefaultLegacy(File);
+var vfs__default = /*#__PURE__*/_interopDefaultLegacy(vfs);
+var ___default = /*#__PURE__*/_interopDefaultLegacy(_);
+var concat__default = /*#__PURE__*/_interopDefaultLegacy(concat);
+var GithubSlugger__default = /*#__PURE__*/_interopDefaultLegacy(GithubSlugger);
+var hljs__default = /*#__PURE__*/_interopDefaultLegacy(hljs);
+
+const {createFormatters, LinkerStack} = documentation.util;
 
 function isFunction(section) {
 	return (
@@ -41,32 +49,75 @@ function formatSignature(section, formatters, isShort) {
 }
 
 async function theme(comments, config) {
-	const linkerStack = new LinkerStack(config)
+		const badges = await import('@thebespokepixel/badges').then(module => module.default);
+		const {remark} = await import('remark');
+		const gap = await import('remark-heading-gap').then(module => module.default);
+		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default);
+		const gfm = await import('remark-gfm').then(module => module.default);
+		const html = await import('remark-html').then(module => module.default);
+		const visit = await import('unist-util-visit').then(module => module.default);
+
+		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
-			const slugger = new GithubSlugger();
+			const slugger = new GithubSlugger__default["default"]();
 			return '#' + slugger.slug(namespace)
 		});
 
 	const formatters = createFormatters(linkerStack.link);
 
-	hljs.configure(config.hljs || {});
+	hljs__default["default"].configure(config.hljs || {});
 
 	const badgesAST = await badges('docs', true);
+
+	const highlighter = ast => {
+		visit(ast, 'code', node => {
+			if (node.lang) {
+				node.type = 'html';
+				node.value =
+					"<pre class='hljs'>" +
+					hljs__default["default"].highlightAuto(node.value, [node.lang]).value +
+					'</pre>';
+			}
+		});
+		return ast
+	};
+
+	const rerouteLinks = (getHref, ast) => {
+		visit(ast, 'link', node => {
+			if (
+				node.jsdoc &&
+				!node.url.match(/^(http|https|\.)/) &&
+				getHref(node.url)
+			) {
+				node.url = getHref(node.url);
+			}
+		});
+		return ast
+};
+
+	const processMarkdown = ast => {
+		if (ast) {
+			return remark()
+				.use(html, {sanitize: false})
+				.stringify(highlighter(rerouteLinks(ast)))
+		}
+		return ''
+	};
 
 	const sharedImports = {
 		imports: {
 			kebabCase(content) {
-				return _.kebabCase(content)
+				return ___default["default"].kebabCase(content)
 			},
 			badges() {
-				return formatters.markdown(badgesAST)
+				return processMarkdown(badgesAST)
 			},
 			usage(example) {
-				const usage = readFileSync(resolve(example));
-				return remark().use(gap).use(squeeze).parse(usage)
+				const usage = node_fs.readFileSync(node_path.resolve(example));
+				return remark().use(gap).use(squeeze).use(gfm).parse(usage)
 			},
 			slug(content) {
-				const slugger = new GithubSlugger();
+				const slugger = new GithubSlugger__default["default"]();
 				return slugger.slug(content)
 			},
 			shortSignature(section) {
@@ -83,21 +134,21 @@ async function theme(comments, config) {
 					};
 				}
 
-				return formatters.markdown(ast)
+				return processMarkdown(ast)
 			},
 			formatType: formatters.type,
 			autolink: formatters.autolink,
 			highlight(example) {
 				if (config.hljs && config.hljs.highlightAuto) {
-					return hljs.highlightAuto(example).value
+					return hljs__default["default"].highlightAuto(example).value
 				}
 
-				return hljs.highlight('js', example).value
+				return hljs__default["default"].highlight('js', example).value
 			}
 		}
 	};
 
-	const renderTemplate = source => _.template(readFileSync(join(__dirname, source), 'utf8'), sharedImports);
+	const renderTemplate = source => ___default["default"].template(node_fs.readFileSync(node_path.join(node_path.dirname(node_url.fileURLToPath((typeof document === 'undefined' ? new (require('u' + 'rl').URL)('file:' + __filename).href : (document.currentScript && document.currentScript.src || new URL('index.js', document.baseURI).href)))), source), 'utf8'), sharedImports);
 
 	sharedImports.imports.renderSectionList = renderTemplate('parts/section_list._');
 	sharedImports.imports.renderSection = renderTemplate('parts/section._');
@@ -108,11 +159,16 @@ async function theme(comments, config) {
 
 	// Push assets into the pipeline as well.
 	return new Promise(resolve => {
-		vfs.src([join(__dirname, 'assets', '**')], {base: __dirname}).pipe(
-			concat(files => {
+		vfs__default["default"].src(
+			[
+				node_path.join(node_path.dirname(node_url.fileURLToPath((typeof document === 'undefined' ? new (require('u' + 'rl').URL)('file:' + __filename).href : (document.currentScript && document.currentScript.src || new URL('index.js', document.baseURI).href)))), 'assets', '**')
+			],
+			{base: node_path.dirname(node_url.fileURLToPath((typeof document === 'undefined' ? new (require('u' + 'rl').URL)('file:' + __filename).href : (document.currentScript && document.currentScript.src || new URL('index.js', document.baseURI).href))))}
+		).pipe(
+			concat__default["default"](files => {
 				resolve(
 					files.concat(
-						new File({
+						new File__default["default"]({
 							path: 'index.html',
 							contents: Buffer.from(pageTemplate({
 								docs: comments,
@@ -126,4 +182,4 @@ async function theme(comments, config) {
 	})
 }
 
-export { theme as default };
+module.exports = theme;

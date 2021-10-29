@@ -13,13 +13,46 @@ import nib from 'nib'
 
 const external = id => !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
 
+function retainImportExpressionPlugin({modules}) {
+	return {
+		name: 'retain-import-expression',
+		resolveDynamicImport(specifier) {
+			if (modules.includes(specifier)) return false
+			return null
+		},
+		renderDynamicImport({ targetModuleId }) {
+			if (modules.includes(targetModuleId)) {
+				return {
+					left: 'import(',
+					right: ')'
+				};
+			}
+		}
+	}
+}
+
 gulp.task('build', () =>
 	rollup({
 		input: 'src/index.js',
 		external,
-		plugins: [resolve(), json({preferConst: true}), commonjs()],
+		plugins: [
+			commonjs(),
+			resolve(),
+			json({preferConst: true}),
+			retainImportExpressionPlugin({
+				modules: [
+					'@thebespokepixel/badges',
+					'remark',
+					'remark-gfm',
+					'remark-html',
+					'remark-heading-gap',
+					'remark-squeeze-paragraphs',
+					'unist-util-visit',
+				]
+			})
+		],
 		output: {
-			format: 'es'
+			format: 'cjs'
 		}
 	})
 	.pipe(source('index.js'))
@@ -30,7 +63,7 @@ gulp.task('site', () =>
 	rollup({
 		input: 'src/site.js',
 		external,
-		plugins: [resolve(), json({preferConst: true}), commonjs()],
+		plugins: [commonjs(), resolve(), json({preferConst: true})],
 		output: {
 			format: 'iife'
 		}
