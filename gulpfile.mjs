@@ -11,19 +11,44 @@ import palette2oco from '@thebespokepixel/palette2oco'
 import stylus from 'gulp-stylus'
 import nib from 'nib'
 
-const external = id => {
-	if (['@thebespokepixel/badges', 'remark', 'remark-heading-gap', 'remark-squeeze-paragraphs'].includes(id)) {
-		return false
+const external = id => !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
+
+function retainImportExpressionPlugin({modules}) {
+	return {
+		name: 'retain-import-expression',
+		resolveDynamicImport(specifier) {
+			if (modules.includes(specifier)) return false
+			return null
+		},
+		renderDynamicImport({ targetModuleId }) {
+			if (modules.includes(targetModuleId)) {
+				return {
+					left: 'import(',
+					right: ')'
+				};
+			}
+		}
 	}
-	return !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
 }
+
 gulp.task('build', () =>
 	rollup({
 		input: 'src/index.js',
 		external,
-		plugins: [resolve(), json({preferConst: true}), commonjs()],
+		plugins: [
+			commonjs(),
+			resolve(),
+			json({preferConst: true}),
+			retainImportExpressionPlugin({
+				modules: [
+					'@thebespokepixel/badges',
+					'remark',
+					'remark-heading-gap',
+					'remark-squeeze-paragraphs',
+				]
+			})
+		],
 		output: {
-			inlineDynamicImports: true,
 			format: 'cjs'
 		}
 	})
@@ -35,7 +60,7 @@ gulp.task('site', () =>
 	rollup({
 		input: 'src/site.js',
 		external,
-		plugins: [resolve(), json({preferConst: true}), commonjs()],
+		plugins: [commonjs(), resolve(), json({preferConst: true})],
 		output: {
 			format: 'iife'
 		}
