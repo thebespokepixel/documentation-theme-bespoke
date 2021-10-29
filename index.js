@@ -13,24 +13,6 @@ var hljs = require('highlight.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-function _interopNamespace(e) {
-	if (e && e.__esModule) return e;
-	var n = Object.create(null);
-	if (e) {
-		Object.keys(e).forEach(function (k) {
-			if (k !== 'default') {
-				var d = Object.getOwnPropertyDescriptor(e, k);
-				Object.defineProperty(n, k, d.get ? d : {
-					enumerable: true,
-					get: function () { return e[k]; }
-				});
-			}
-		});
-	}
-	n["default"] = e;
-	return Object.freeze(n);
-}
-
 var File__default = /*#__PURE__*/_interopDefaultLegacy(File);
 var vfs__default = /*#__PURE__*/_interopDefaultLegacy(vfs);
 var ___default = /*#__PURE__*/_interopDefaultLegacy(_);
@@ -71,9 +53,9 @@ async function theme(comments, config) {
 		const {remark} = await import('remark');
 		const gap = await import('remark-heading-gap').then(module => module.default);
 		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default);
-		const gfm = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark-gfm')); }).then(module => module.default);
-		const html = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('remark-html')); }).then(module => module.default);
-		const visit = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('unist-util-visit')); }).then(module => module.default);
+		const gfm = await import('remark-gfm').then(module => module.default);
+		const html = await import('remark-html').then(module => module.default);
+		const visit = await import('unist-util-visit').then(module => module.default);
 
 		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
