@@ -8,10 +8,6 @@ import concat from 'concat-stream'
 import GithubSlugger from 'github-slugger'
 import {util} from 'documentation'
 import hljs from 'highlight.js'
-import badges from '@thebespokepixel/badges'
-import {remark} from 'remark'
-import gap from 'remark-heading-gap'
-import squeeze from 'remark-squeeze-paragraphs'
 
 const {createFormatters, LinkerStack} = util
 
@@ -42,7 +38,12 @@ function formatSignature(section, formatters, isShort) {
 }
 
 export default async function theme(comments, config) {
-	const linkerStack = new LinkerStack(config)
+		const badges = await import('@thebespokepixel/badges').then(module => module.default)
+		const {remark} = await import('remark')
+		const gap = await import('remark-heading-gap').then(module => module.default)
+		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default)
+
+		const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
 			const slugger = new GithubSlugger()
 			return '#' + slugger.slug(namespace)
