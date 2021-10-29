@@ -43,8 +43,11 @@ gulp.task('build', () =>
 				modules: [
 					'@thebespokepixel/badges',
 					'remark',
+					'remark-gfm',
+					'remark-html',
 					'remark-heading-gap',
 					'remark-squeeze-paragraphs',
+					'unist-util-visit',
 				]
 			})
 		],
