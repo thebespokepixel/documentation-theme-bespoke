@@ -1,6 +1,6 @@
 {
   "name": "documentation-theme-bespoke",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
     "build": "gulp",
