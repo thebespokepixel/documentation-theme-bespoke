@@ -52,6 +52,7 @@ gulp.task('build', () =>
 			})
 		],
 		output: {
+			exports: 'default',
 			format: 'cjs'
 		}
 	})

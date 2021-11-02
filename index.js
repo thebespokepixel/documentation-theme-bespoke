@@ -145,7 +145,7 @@ async function theme(comments, config) {
 					return hljs__default["default"].highlightAuto(example).value
 				}
 
-				return hljs__default["default"].highlight('js', example).value
+				return hljs__default["default"].highlight(example, {language: 'js'}).value
 			}
 		}
 	};

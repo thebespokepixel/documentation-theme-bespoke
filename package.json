@@ -3,12 +3,12 @@
   "version": "2.0.9",
   "description": "A bespoke theme for documentation.js",
   "scripts": {
-    "build": "gulp",
+    "build": "gulp && npm run readme",
     "external-assets": "npm install --no-save ace-css anchor-js split.js typopro-web",
     "test": "xo && c8 --reporter=text ava",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "doc-build": "echo 'Building docs...'",
-    "coverage": "c8 --reporter=lcov ava; open test/coverage/lcov-report/index.html"
+    "coverage": "c8 --reporter=lcov ava; open coverage/lcov-report/index.html"
   },
   "main": "index.js",
   "files": [
@@ -42,7 +42,7 @@
     "remark-gfm": "^3.0.0",
     "remark-heading-gap": "^5.0.0",
     "remark-html": "^15.0.0",
-    "remark-squeeze-paragraphs": "^5.0.0",
+    "remark-squeeze-paragraphs": "^5.0.1",
     "unist-util-visit": "^4.1.0",
     "vinyl": "^2.2.1",
     "vinyl-fs": "^3.0.3"
@@ -67,7 +67,7 @@
     "gulp-stylus": "^2.7.0",
     "gulp-terser": "^2.1.0",
     "nib": "^1.1.2",
-    "rollup": "^2.58.3",
+    "rollup": "^2.59.0",
     "vinyl-source-stream": "^2.0.0",
     "xo": "^0.46.3"
   },
