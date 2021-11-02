@@ -134,7 +134,7 @@ export default async function theme(comments, config) {
 					return hljs.highlightAuto(example).value
 				}
 
-				return hljs.highlight('js', example).value
+				return hljs.highlight(example, {language: 'js'}).value
 			}
 		}
 	}
