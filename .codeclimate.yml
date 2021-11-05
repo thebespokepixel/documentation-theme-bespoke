@@ -24,4 +24,3 @@ exclude_paths:
 - assets/
 - parts/
 - index.js
-- gulpfile.js
