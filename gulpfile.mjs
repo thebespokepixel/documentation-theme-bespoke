@@ -7,7 +7,7 @@ import rollup from '@rollup/stream'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
-import palette2oco from '@thebespokepixel/palette2oco'
+import {oco2Vars, paletteReader, paletteWriter} from '@thebespokepixel/palette2oco'
 import stylus from 'gulp-stylus'
 import nib from 'nib'
 
@@ -80,10 +80,10 @@ gulp.task('clean', gulp.parallel(
 	() => gulp.src('./src/vars.styl', {read: false}).pipe(clean())
 ))
 
-gulp.task('css', () => palette2oco.paletteReader(`src`)
+gulp.task('css', () => paletteReader(`src`)
 	.load(['src/palette.oco'])
-	.then(palette2oco.oco2Vars)
-	.then(palette => palette2oco.paletteWriter('src/vars.styl', palette))
+	.then(oco2Vars)
+	.then(palette => paletteWriter('src/vars.styl', palette))
 	.then(() => gulp.src('./src/style.styl')
 		.pipe(stylus({
 			'include css': true,
