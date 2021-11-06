@@ -49,15 +49,15 @@ function formatSignature(section, formatters, isShort) {
 }
 
 async function theme(comments, config) {
-		const badges = await import('@thebespokepixel/badges').then(module => module.default);
-		const {remark} = await import('remark');
-		const gap = await import('remark-heading-gap').then(module => module.default);
-		const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default);
-		const gfm = await import('remark-gfm').then(module => module.default);
-		const html = await import('remark-html').then(module => module.default);
-		const {visit} = await import('unist-util-visit');
+	const badges = await import('@thebespokepixel/badges').then(module => module.default);
+	const {remark} = await import('remark');
+	const gap = await import('remark-heading-gap').then(module => module.default);
+	const squeeze = await import('remark-squeeze-paragraphs').then(module => module.default);
+	const gfm = await import('remark-gfm').then(module => module.default);
+	const html = await import('remark-html').then(module => module.default);
+	const {visit} = await import('unist-util-visit');
 
-		const linkerStack = new LinkerStack(config)
+	const linkerStack = new LinkerStack(config)
 		.namespaceResolver(comments, namespace => {
 			const slugger = new GithubSlugger__default["default"]();
 			return '#' + slugger.slug(namespace)
