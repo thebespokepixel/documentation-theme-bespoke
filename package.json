@@ -34,7 +34,7 @@
   "dependencies": {
     "@thebespokepixel/badges": "^4.0.8",
     "concat-stream": "^2.0.0",
-    "documentation": "^13.2.5",
+    "documentation": "^14.0.0",
     "github-slugger": "^1.4.0",
     "highlight.js": "^11.3.1",
     "lodash": "^4.17.21",
@@ -45,7 +45,7 @@
     "remark-squeeze-paragraphs": "^5.0.1",
     "unist-util-visit": "^4.1.0",
     "vinyl": "^2.2.1",
-    "vinyl-fs": "^3.0.3"
+    "vinyl-fs": "^4.0.0"
   },
   "peerDependencies": {
     "ace-css": "^1.1.0",
